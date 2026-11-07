@@ -77,6 +77,10 @@ Gestione slot (singoli e generazione per intervallo di date), giorni di chiusura
 
 Banner e modale preferenze con consensi granulari (analytics, marketing, social, YouTube). Ogni categoria ha un oggetto in `cookiesDispatcher` con `activate` e `fallback`; per personalizzarlo in un child theme caricare il proprio script dopo `cookies-dispatcher` e ridefinire le callback.
 
+## Demo multisite
+
+`inc/demo-switcher.php` mostra, sui sottositi di una rete multisite, una barra per passare da una demo all'altra. È disattivata di default: si abilita con l'opzione di rete `dci_demo_switcher`.
+
 ## Integrazioni
 
 Elementor (breadcrumb e ottimizzazione risorse), Jetpack, override del blocco *Ultimi articoli* con le card Bootstrap Italia. Breadcrumb con microdata Schema.org (`wpdi_breadcrumbs()`, filtro `wpdi_breadcrumbs_defaults`).
@@ -85,7 +89,7 @@ Elementor (breadcrumb e ottimizzazione risorse), Jetpack, override del blocco *U
 
 ```
 wp-pa-theme/
-├── assets/            # immagini (placeholder slider/news), CSS e JS non compilati (booking, cookie)
+├── assets/            # immagini (placeholder news), CSS e JS non compilati (booking, cookie)
 ├── classes/           # walker dei menu (Bootstrap 5)
 ├── dist/              # asset compilati (versionati)
 ├── inc/               # helper, opzioni tema, customizer, booking, breadcrumb

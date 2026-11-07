@@ -1,30 +1,63 @@
-# wp-pa-theme
+# WP Digital Italia
 
-Monorepo con due temi WordPress per la Pubblica Amministrazione, da clonare direttamente in `wp-content/themes/`.
+**Un unico tema WordPress, tanti enti pubblici.** Un parent theme accessibile basato su [Bootstrap Italia](https://italia.github.io/bootstrap-italia/) (font Titillium Web, linee guida AgID) e un child theme per ogni tipo di ente: **Comuni**, **ASL**, **Scuole**.
+
+### 👉 Demo online: **https://wp-pa-demo.programmato.it**
+
+Una rete WordPress multisite con tre siti reali, ognuno con il proprio tema, contenuti e profilo grafico: [Comuni](https://wp-pa-demo.programmato.it/comuni/) · [ASL](https://wp-pa-demo.programmato.it/asl/) · [Scuole](https://wp-pa-demo.programmato.it/scuole/). I dati sono fittizi.
+
+![Hub di presentazione](docs/screenshots/hub.png)
+
+| ASL | Comuni | Scuole |
+|---|---|---|
+| ![ASL](docs/screenshots/asl.png) | ![Comuni](docs/screenshots/comuni.png) | ![Scuole](docs/screenshots/scuole.png) |
+
+## Cosa offre
+
+- **Bootstrap Italia** con asset già compilati nel repository (nessuna build per usarlo).
+- **Accessibilità**: landmark, skip link, `aria-*` su tab/accordion/slider, focus visibile, slider con pausa e rispetto di `prefers-reduced-motion`.
+- **Layout "portale sanitario"** modellato su portali come aslroma1.it: fascia "Scopri come fare per", hero con slider delle news, tab *Informa*, strutture, guida ai servizi.
+- **Boxed o full width** dal Personalizza (default boxed: sfondi a tutta larghezza, contenuti centrati).
+- **Sidebar a sinistra a box colorati**: navigazione di sezione contestuale, contatti, accessi rapidi, accordion di servizi e strutture.
+- **Organigramma e strutture**: dipartimenti gerarchici con persone, ruoli e unità collegate.
+- **Bandi e concorsi**: filtro per anno, stato *In corso*/*Scaduto*, allegati, termini, aggiudicatari.
+- **Prenotazione appuntamenti** con slot e calendario; **cookie consent** GDPR granulare.
+- **Profili per ente via child theme**: cambiano solo colori e contenuti, il lavoro pesante sta nel parent.
+
+![Organigramma e sidebar](docs/screenshots/organigramma.png)
+
+## Struttura del repository
+
+Il repository va clonato direttamente in `wp-content/themes/`:
 
 | Cartella | Tema |
 |---|---|
-| [`wp-pa-theme/`](wp-pa-theme/README.md) | **WP Digital Italia** (parent): Bootstrap Italia, Titillium Web, layout portale sanitario |
-| [`wp-pa-theme-asl/`](wp-pa-theme-asl/README.md) | **WP Digital Italia - ASL** (child): eredita tutto dal parent e ospita le personalizzazioni delle ASL |
+| [`wp-pa-theme/`](wp-pa-theme/README.md) | **Parent**: Bootstrap Italia, layout, CPT, opzioni tema |
+| [`wp-pa-theme-asl/`](wp-pa-theme-asl/README.md) | Child per le **ASL** |
+| `wp-pa-theme-comune/` | Child per i **Comuni** (profilo verde) |
+| `wp-pa-theme-scuola/` | Child per le **Scuole** (profilo viola) |
+| `wp-pa-theme-hub/` | Child della **landing di presentazione** della demo multisite |
 
-## Installazione
+```
+wp-pa-theme  ←  wp-pa-theme-asl      (/asl/)
+             ←  wp-pa-theme-comune   (/comuni/)
+             ←  wp-pa-theme-scuola   (/scuole/)
+             ←  wp-pa-theme-hub      (/ hub)
+```
+
+## Installazione rapida
 
 ```bash
 cd wp-content/themes
 git clone git@github.com:ttensrl/wp-pa-theme.git .
 ```
 
-Poi, da Aspetto → Temi, attivare **WP Digital Italia - ASL** (il parent deve restare installato). Gli asset compilati sono già inclusi: non serve alcuna build per usare i temi.
+Da Aspetto → Temi attivare il child desiderato (il parent deve restare installato). Per modificare stili e script del parent: `cd wp-pa-theme && npm install && npm run build`, poi committare anche `dist/`. Opzioni, template e CPT sono documentati nel [README del parent](wp-pa-theme/README.md).
 
-## Sviluppo
+## Demo e deploy
 
-La build riguarda solo il parent (`cd wp-pa-theme && npm install && npm run build`); dopo ogni modifica a `src/` committare anche `dist/`. Dettagli nel README del parent.
+La demo è una installazione multisite con percorsi virtuali (`/comuni/`, `/asl/`, `/scuole/`). I contenuti demo e gli script di deploy (WP-CLI, `rsync`, push del DB) stanno nella cartella dell'installazione WordPress, fuori da questo repository.
 
-## Contenuti demo
+## Licenza e contatti
 
-Per provare i temi con dati realistici di una ASL (strutture, persone, servizi, bandi, news, menu) si usa la cartella `demo-content/` nella radice del progetto WordPress, fuori da questo repository:
-
-```bash
-wp eval-file demo-content/import-all.php   # crea/aggiorna i contenuti e attiva il child ASL
-wp eval-file demo-content/reset-all.php    # elimina solo i contenuti demo
-```
+GPL v2 o successiva. Realizzato da TTEN. Assistenza: luca.terribili@tten.it

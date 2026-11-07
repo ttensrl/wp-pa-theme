@@ -24,11 +24,11 @@ $total    = $q->post_count;
 		$i = 0;
 		while ( $q->have_posts() ) :
 			$q->the_post();
-			$img = has_post_thumbnail() ? get_the_post_thumbnail_url( get_the_ID(), 'large' ) : dci_hero_placeholder( $i );
+			$img = has_post_thumbnail() ? get_the_post_thumbnail_url( get_the_ID(), 'large' ) : '';
 			$cat = array_values( array_filter( get_the_category(), fn( $c ) => (int) $c->term_id !== (int) get_option( 'default_category' ) ) );
 			?>
-			<article class="dci-hero-slide<?php echo 0 === $i ? ' is-active' : ''; ?>" role="group" aria-roledescription="slide" aria-label="<?php echo esc_attr( sprintf( __( '%1$d di %2$d', 'wp-digital-italia' ), $i + 1, $total ) ); ?>"<?php echo $i ? ' hidden' : ''; ?>>
-				<img class="dci-hero-slide__img" src="<?php echo esc_url( $img ); ?>" alt="" loading="<?php echo $i ? 'lazy' : 'eager'; ?>">
+			<article class="dci-hero-slide dci-hero-slide--v<?php echo (int) ( $i % 3 ); ?><?php echo $img ? '' : ' is-placeholder'; ?><?php echo 0 === $i ? ' is-active' : ''; ?>" role="group" aria-roledescription="slide" aria-label="<?php echo esc_attr( sprintf( __( '%1$d di %2$d', 'wp-digital-italia' ), $i + 1, $total ) ); ?>"<?php echo $i ? ' hidden' : ''; ?>>
+				<?php if ( $img ) : ?><img class="dci-hero-slide__img" src="<?php echo esc_url( $img ); ?>" alt="" loading="<?php echo $i ? 'lazy' : 'eager'; ?>"><?php endif; ?>
 				<div class="dci-hero-slide__caption">
 					<?php if ( $cat ) : ?><span class="dci-hero-slide__cat"><?php echo esc_html( $cat[0]->name ); ?></span><?php endif; ?>
 					<h2 class="dci-hero-slide__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>

@@ -6,7 +6,6 @@
 
 /* Layout "portale sanitario": usa solo token di Bootstrap Italia (font Titillium, colori e focus del tema). */
 .dci-section { padding-block: 2.5rem; }
-.dci-section--alt { background: var(--bs-light, #f5f5f5); }
 .dci-section__title { font-weight: 700; margin-bottom: 1.75rem; text-align: center; }
 .dci-section__title::after { content: ""; display: block; width: 3.5rem; height: 4px; background: var(--bs-primary); margin: .6rem auto 0; }
 .dci-section > .container-fluid { max-width: 1200px; margin-inline: auto; }
@@ -144,3 +143,20 @@ body.layout-boxed footer .container-fluid { padding-inline: 1.5rem; }
 .dci-box--acc-2 { background: color-mix(in srgb, var(--bs-primary) 26%, #fff); color: color-mix(in srgb, var(--bs-primary) 85%, #000); }
 .dci-box--acc a { color: inherit; }
 .dci-box--widgets { background: var(--bs-light, #f5f5f5); }
+
+/* Barra demo (solo installazioni multisite dimostrative) */
+.dci-demo-bar { background: #0b1f44; color: #fff; font-size: .875rem; }
+.dci-demo-bar__in { max-width: 1200px; margin-inline: auto; padding: .35rem 1.5rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.dci-demo-bar ul { display: flex; gap: .25rem; list-style: none; margin: 0; padding: 0; }
+.dci-demo-bar a { color: #fff; text-decoration: none; padding: .2rem .8rem; border-radius: 1rem; font-weight: 600; }
+.dci-demo-bar a:hover, .dci-demo-bar a:focus-visible { background: rgba(255, 255, 255, .18); }
+.dci-demo-bar a.is-current { background: #fff; color: #0b1f44; }
+.dci-demo-bar__hub { opacity: .85; }
+
+/* Slide senza immagine: sfondo generato dal colore primario del sito (si adatta a ogni child) */
+.dci-hero-slide.is-placeholder { background: linear-gradient(135deg, color-mix(in srgb, var(--bs-primary) 55%, #000) 0%, var(--bs-primary) 100%); overflow: hidden; }
+.dci-hero-slide.is-placeholder::after { content: ""; position: absolute; width: 520px; height: 520px; border-radius: 50%; background: rgba(255, 255, 255, .09); right: -120px; top: -160px; }
+.dci-hero-slide--v1.is-placeholder::after { left: -140px; right: auto; top: auto; bottom: -220px; }
+.dci-hero-slide--v2.is-placeholder::after { right: 20%; top: -260px; width: 420px; height: 420px; }
+.dci-hero-slide.is-placeholder::before { z-index: 0; }
+.dci-section--alt { background: color-mix(in srgb, var(--bs-primary) 6%, #fff); }

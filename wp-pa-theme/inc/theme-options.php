@@ -72,11 +72,6 @@ add_filter( 'body_class', function ( array $classes ): array {
 	return $classes;
 } );
 
-/** URL immagine placeholder (ciclica) per lo slider. */
-function dci_hero_placeholder( int $index ): string {
-	return get_template_directory_uri() . '/assets/images/hero-placeholder-' . ( $index % 3 + 1 ) . '.svg';
-}
-
 /** Senza logo caricato, mostra il nome del sito come marchio testuale. */
 add_filter( 'get_custom_logo', function ( $html ) {
 	if ( $html ) {

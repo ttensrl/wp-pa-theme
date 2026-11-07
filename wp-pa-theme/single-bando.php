@@ -56,8 +56,8 @@ while (have_posts()) :
             <div class="row g-4">
 
                 <!-- Sidebar indice -->
-                <aside class="col-12 col-lg-3" aria-label="<?php esc_attr_e('Indice della pagina', 'wp-digital-italia'); ?>">
-                    <div class="sticky-top" style="top: 80px;">
+                <div class="col-12 col-lg-3 order-lg-1">
+                    <div class="mb-4">
                         <nav id="page-index" aria-label="Indice della pagina">
                             <p class="text-uppercase fw-semibold text-muted small mb-2 ps-3">
                                 <?php _e('Indice della pagina', 'wp-digital-italia'); ?>
@@ -74,10 +74,11 @@ while (have_posts()) :
                             </ul>
                         </nav>
                     </div>
-                </aside>
+                    <?php get_sidebar(); ?>
+                </div>
 
                 <!-- Contenuto principale -->
-                <div class="col-12 col-lg-9">
+                <div class="col-12 col-lg-9 order-lg-2">
 
                     <!-- ===== DETTAGLI: griglia con card ===== -->
                     <section id="dettagli" class="mb-5 pb-4 border-bottom" aria-labelledby="dettagli-title">

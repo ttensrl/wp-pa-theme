@@ -17,7 +17,7 @@ get_header();
 
 	<main id="primary" class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-lg-9 order-lg-2">
 		<?php
 		if ( have_posts() ) :
 
@@ -52,7 +52,7 @@ get_header();
 		?>
             </div>
             <!-- SIDEBAR -->
-            <div class="col-md-4">
+            <div class="col-lg-3 order-lg-1">
                 <?php get_sidebar(); ?>
             </div>
         </div>

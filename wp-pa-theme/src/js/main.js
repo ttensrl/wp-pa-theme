@@ -35,6 +35,7 @@ import {
 } from 'bootstrap-italia'
 
 // 4. Custom modules
+import './hero-slider'
 import './cookies-settings'
 import  './utility'
 

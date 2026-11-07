@@ -16,7 +16,7 @@ get_header();
 ?>
     <main id="primary" class="container-fluid py-2 py-md-5">
         <div class="row">
-            <div class="col-lg">
+            <div class="col-lg-9 order-lg-2">
 
                 <?php
                 while (have_posts()) :
@@ -33,7 +33,7 @@ get_header();
                 ?>
             </div>
             <!-- SIDEBAR -->
-            <div class="col-lg-4 col-xxl-auto">
+            <div class="col-lg-3 order-lg-1">
                 <?php get_sidebar(); ?>
             </div>
         </div>

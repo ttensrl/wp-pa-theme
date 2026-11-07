@@ -33,7 +33,7 @@ get_header();
 
 		<div class="container-fluid py-5">
 			<div class="row g-4">
-				<div class="col">
+				<div class="col-lg-9 order-lg-2">
 					<?php if ( have_posts() ) : ?>
 
 						<?php
@@ -53,7 +53,7 @@ get_header();
 					endif;
 					?>
 				</div>
-                <div class="col-lg-4 col-xxl-auto">
+                <div class="col-lg-3 order-lg-1">
                     <?php get_sidebar(); ?>
                 </div>
 			</div>

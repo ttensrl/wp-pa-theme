@@ -17,7 +17,6 @@ if ( ! $q->have_posts() ) {
 }
 $autoplay = get_theme_mod( 'dci_hero_autoplay', true ) && $q->post_count > 1;
 $total    = $q->post_count;
-wp_enqueue_script( 'dci-hero-slider', get_template_directory_uri() . '/assets/js/hero-slider.js', array(), _S_VERSION, true );
 ?>
 <section class="dci-hero-slider" aria-roledescription="carousel" aria-label="<?php esc_attr_e( 'Ultime notizie', 'wp-digital-italia' ); ?>" data-autoplay="<?php echo $autoplay ? '1' : '0'; ?>" data-interval="6000">
 	<div class="dci-hero-slider__track" aria-live="off">

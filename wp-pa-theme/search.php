@@ -12,7 +12,7 @@ get_header();
     <?php if ( have_posts() ) : ?>
 	<main id="primary" class="container-fluid py-2 py-md-5">
         <div class="row">
-            <div class="col">
+            <div class="col-lg-9 order-lg-2">
                 <section class="px-3">
                     <header class="page-header mb-4">
                         <h1 class="page-title">
@@ -44,7 +44,7 @@ get_header();
                 </section>
             </div>
             <!-- SIDEBAR -->
-            <div class="col-lg-4 col-xxl-auto">
+            <div class="col-lg-3 order-lg-1">
                 <?php get_sidebar(); ?>
             </div>
         </div>

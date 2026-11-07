@@ -1,261 +1,105 @@
-# Digital Italia WordPress Theme
+# WP Digital Italia (`wp-pa-theme`)
 
-## Demo
+Tema WordPress per siti istituzionali e della Pubblica Amministrazione, basato su [Bootstrap Italia](https://italia.github.io/bootstrap-italia/) (font Titillium Web, componenti accessibili, linee guida AgID).
+Include un layout "portale sanitario" (home con slider news, organigramma, strutture, bandi, sidebar a box) pensato per ASL e enti analoghi.
 
-Visualizza il tema in azione: [https://wp-digital-italia.programmato.it/](https://wp-digital-italia.programmato.it/)
-
-## Descrizione
-
-Il tema WordPress "Digital Italia" è basato sul framework Bootstrap Italia e progettato per creare siti web conformi agli standard del design italiano per la web. Ideale per siti governativi, istituzionali e della Pubblica Amministrazione, con particolare attenzione alla conformità alle linee guida AgID.
-
-## Funzionalità Principali
-
-### Framework e Design
-
-- **Bootstrap Italia**: Integrazione completa con il framework ufficiale per un design moderno, responsivo e conforme alle linee guida di design per i siti della PA
-- **Font Titillium Web e Roboto Mono**: Font ufficiali inclusi per la tipografia
-- **Layout responsivo**: Adattamento automatico per desktop, tablet e mobile
-- **Supporto RTL**: Compatibilità con lingue da destra a sinistra
-- **Vite**: Build system moderno per JavaScript e CSS
-
-### Sistema di Prenotazione Appuntamenti
-
-Sistema completo per la gestione delle prenotazioni online:
-
-- **Gestione Slot**: Creazione, modifica ed eliminazione di slot orari per appuntamenti
-- **Generazione Automatica**: Generazione batch di slot per range di date con configurazione flessibile (orari, durata, pausa pranzo, intervallo tra slot)
-- **Calendario Frontend**: Interfaccia guidata per i cittadini (selezione mese → giorno → orario)
-- **Gestione Giorni di Chiusura**: Supporto per giorni festivi singoli e ricorrenze settimanali
-- **Email Automatiche**: Conferma prenotazione all'utente e notifica all'amministratore
-- **API AJAX**: Endpoint per interazione frontend/backend
-
-### Custom Post Types
-
-- **Servizio**: Post type per la gestione dei servizi offerti dall'ente
-- **Appuntamento**: Post type per le prenotazioni, con metabox per dati richiedente, date e servizio associato
-- **Persona**: Post type per le persone che compongono l'organizzazione, con supporto per foto e metabox per dati anagrafici
-- **Dipartimento**: Post type gerarchico per i dipartimenti dell'organizzazione, con logo e metabox informativi
-- **Bando**: Post type per bandi di gara e concorsi, con URL personalizzato `/bandi/{anno}/{slug}/`
-
-### Tassonomie
-
-- **Tipologia Persona**: Tassonomia per categorizzare le persone (es. Dirigente, Funzionario, etc.)
-- **Argomento Bando**: Tassonomia per categorizzare i bandi
-
-### Menu e Navigazione
-
-- **7 Posizioni Menu**: Top Menu, Main Menu, Footer One/Two/Three/Four, Footer Bottom
-- **Menu Walker Bootstrap 5**: Tre walker personalizzati per menu compliant con Bootstrap Italia:
-  - `bootstrap_5_wp_main_menu_walker`: Menu principale con dropdown
-  - `bootstrap_5_wp_simple_menu_walker`: Menu semplice
-  - `bootstrap_5_wp_inline_menu_walker`: Menu inline
-
-### Breadcrumbs
-
-Sistema di breadcrumb completo con:
-- Supporto microdata Schema.org
-- Navigazione per pagine, post, CPT, archivi, tassonomie
-- Integrazione con Elementor
-
-### Layout "portale sanitario" e Opzioni tema
-
-Personalizza → **Layout e Home** (`inc/theme-options.php`):
-
-- **Larghezza del sito**: *boxed* (default: sfondi a tutta larghezza, contenuti centrati in un contenitore di 1200px, come aslroma1.it) oppure *full width*. Si applica come classe `layout-boxed` / `layout-full` sul `<body>`.
-- **Hero slider delle news** in home: attivabile, numero di news (1-10), categoria, scorrimento automatico. Accessibile (frecce, pallini, pausa, stop su hover/focus, `prefers-reduced-motion`). Senza immagine in evidenza usa i placeholder `assets/images/hero-placeholder-*.svg`.
-- Senza logo caricato, l'header mostra il nome del sito.
-
-Template inclusi (`page-templates/`, `template-parts/home/`, `archive-*.php`):
-
-- **Home** (`page-home.php`): fascia "Scopri come fare per", slider news, ricerca, tab "Informa" (notizie / bandi), strutture, guida ai servizi.
-- **Organigramma** (`page-organigramma.php`): accordion per struttura di primo livello con persone, ruoli e unità collegate.
-- **Strutture** (`archive-dipartimento.php`) e **Bandi** (`archive-bando.php`, filtro per anno, stato In corso/Scaduto).
-
-Gli stili aggiuntivi stanno in `assets/css/layouts.css` (usa solo i token di Bootstrap Italia, incluso il caricamento di Titillium Web), caricato dopo `dist/css/main.css`: non richiede la build Vite.
-
-### Child theme ASL
-
-Il repository contiene anche `wp-pa-theme-asl`, child theme per le Aziende Sanitarie Locali (vedi il README nella radice del repository).
-
-### Cookie Consent (GDPR)
-
-- **Banner Cookie**: Barra di consenso configurabile
-- **Modal Preferenze**: Gestione granulare dei consensi
-- **Tipologie Supportate**: Analytics, Marketing, Social, YouTube
-- **Dispatcher JavaScript**: Sistema per attivare/fallback script in base alle preferenze
-
-### WordPress Customizer
-
-Sezioni dedicate per:
-- **Site Contact**: Email, telefono, indirizzo, P.IVA, città, URP, Amministrazione Trasparente
-- **Site Socials**: Facebook, Instagram, Twitter
-- **Cookies Settings**: Configurazione banner, scadenza, pagina privacy, tipologie cookie
-- **Loghi**: Logo principale, logo amministrazione appartenenza, logo chiaro per footer
-
-### Integrazioni
-
-- **Elementor**: Supporto nativo con breadcrumb automatici e ottimizzazione risorse
-- **Jetpack**: Compatibilità con il plugin Jetpack
-- **CMB2**: Libreria inclusa per metabox avanzati con estensioni:
-  - Font Awesome picker
-  - Select2 fields
-  - Attached posts
-  - Conditional logic
-
-### Blocchi Gutenberg
-
-Override del blocco "Ultimi Post" con styling Bootstrap Italia (card, grid/list layout)
-
-### Template di Pagina
-
-- **page-booking.php**: Template per la prenotazione appuntamenti
-- **page-home.php**: Template homepage
-- **page-full.php**: Template a larghezza piena
-
-### Template Single
-
-- **single-servizio.php**: Template per singolo servizio
-- **single-persona.php**: Template per singola persona
-- **single-dipartimento.php**: Template per singolo dipartimento
-- **single-bando.php**: Template per singolo bando
-
-### Template Archive
-
-- **archive-persona.php**: Archivio persone
-- **archive-bando.php**: Archivio bandi
+> Questo tema è il **parent**. Il child theme per le ASL è `../wp-pa-theme-asl` (vedi il [README del repository](../README.md)).
 
 ## Requisiti
 
-- WordPress 5.0+
-- PHP 7.4+
+- WordPress 5.0+ e PHP 7.4+
+- Node.js solo se si modificano gli stili/script: **gli asset compilati sono già in `dist/`** e vengono versionati nel repository.
 
 ## Installazione
 
-1. Scarica il tema dal repository
-2. Carica la cartella `wp-digital-italia` in `wp-content/themes/`
-3. Attiva il tema da Aspetto > Temi
-4. Configura le opzioni dal Customizer (Aspetto > Personalizza)
+1. Clonare il repository in `wp-content/themes/` (contiene sia questo tema sia il child ASL).
+2. Aspetto → Temi → attivare *WP Digital Italia* (o il child *WP Digital Italia - ASL*).
+3. Configurare Aspetto → Personalizza (vedi sotto).
 
-## Personalizzazione
+## Sviluppo e build
 
-### Child Theme
+Sorgenti in `src/` (SCSS e JS), compilati con Vite in `dist/`:
 
-Per personalizzazioni che sopravvivono agli aggiornamenti, creare un child theme:
-
-```css
-/*
-Theme Name: Digital Italia Child
-Template: wp-digital-italia
-Version: 1.0.0
-*/
-
-/* Aggiungi le tue personalizzazioni CSS qui */
+```bash
+npm install
+npm run build   # produce dist/css/main.css, dist/js/main.js, font e icone
+npm run dev     # build in watch
 ```
 
-### Personalizzare il Cookie Dispatcher
+**Dopo ogni modifica a `src/` eseguire `npm run build` e committare anche `dist/`**: il tema in produzione non compila nulla.
 
-Il tema include un oggetto JavaScript `cookiesDispatcher` per gestire le callback delle scelte cookie. Per personalizzarlo:
+| Percorso | Contenuto |
+|---|---|
+| `src/scss/main.scss` | Entry point: importa i moduli Bootstrap Italia usati e `_layouts.scss` |
+| `src/scss/_custom-colors.scss` | Palette (HSB) da modificare per cambiare il colore primario |
+| `src/scss/_layouts.scss` | Stili del layout (boxed/full, slider, sidebar a box, liste, `@font-face` Titillium) |
+| `src/js/main.js` | Entry JS: moduli Bootstrap Italia, slider news, cookie consent |
 
-1. Deregistra lo script predefinito nel functions.php del child theme:
+## Opzioni tema
 
-```php
-function deregister_default_cookies_dispatcher() {
-    wp_deregister_script('cookies-settings');
-}
-add_action('wp_enqueue_scripts', 'deregister_default_cookies_dispatcher', 100);
-```
+Aspetto → Personalizza → **Layout e Home**:
 
-2. Registra il tuo script personalizzato:
+| Opzione | Default | Note |
+|---|---|---|
+| Larghezza del sito | Boxed | *Boxed*: sfondi a tutta larghezza, contenuti centrati in 1200px. *Full*: contenitori fluidi. Classe `layout-boxed` / `layout-full` sul `<body>` |
+| Slider news in home | Attivo | Numero di news (1-10), categoria, scorrimento automatico |
+| Sidebar: titolo e orari del box contatti | vuoto | Il telefono è quello di *Site Contact* |
 
-```php
-function register_custom_cookies_dispatcher() {
-    wp_enqueue_script('custom-cookies-dispatcher', get_stylesheet_directory_uri() . '/js/custom-cookies-dispatcher.js', ['jquery'], '1.0.0', true);
-}
-add_action('wp_enqueue_scripts', 'register_custom_cookies_dispatcher');
-```
+Altre sezioni del Customizer: **Site Contact** (email, telefono, indirizzo, P.IVA, città, URP, Amministrazione Trasparente), **Site Socials**, **Cookies Settings**, **Loghi** (principale, ente di appartenenza, chiaro per il footer). Senza logo l'header mostra il nome del sito.
 
-3. Implementa le callback:
+## Layout
 
-```javascript
-const cookiesDispatcher = {
-    cookies_settings_consent_analytics: {
-        activate: function () {
-            // Codice per attivare analytics
-        },
-        fallback: function () {
-            // Codice per disattivare analytics
-        }
-    }
-}
-```
+- **Home** (`page-templates/page-home.php`, parti in `template-parts/home/`): fascia "Scopri come fare per", hero slider delle news, ricerca, tab Informa (notizie / bandi), strutture, guida ai servizi. Senza sidebar.
+- **Pagine interne**: sidebar **sempre a sinistra** (`sidebar.php`) con box colorati derivati dal colore primario: navigazione di sezione (contestuale), contatti, "Scopri come fare per", accordion *Guida ai servizi* e *Strutture*, area widget `sidebar-1`. Nel DOM il contenuto precede la sidebar (ordine di tabulazione corretto) e viene riordinato con `order-lg-*`.
+- **Organigramma** (`page-templates/page-organigramma.php`): accordion per struttura di primo livello con persone, ruoli e unità collegate.
+- **Strutture** (`archive-dipartimento.php`), **Bandi** (`archive-bando.php`, filtro per anno, stato *In corso*/*Scaduto*), **Persone** (`archive-persona.php`).
+- **Altri template di pagina**: `page-full.php` (larghezza piena), `page-booking.php` (prenotazioni).
 
-## Database Tables
+Accessibilità: skip link, landmark etichettati, `aria-*` su tab/accordion/slider, slider con pausa, stop su hover/focus e rispetto di `prefers-reduced-motion`, focus visibile.
 
-Il tema crea automaticamente le seguenti tabelle al momento dell'attivazione:
+## Contenuti (Custom Post Type)
 
-- `wp_booking_slots`: Gestione degli slot orari
-- `wp_booking_reservations`: Gestione delle prenotazioni
-- `wp_booking_closed_days`: Giorni di chiusura
+| CPT | Slug / archivio | Campi principali |
+|---|---|---|
+| `dipartimento` (gerarchico) | `/dipartimento/` | contatti, mappa (lat/lng), responsabile, organigramma, servizi collegati |
+| `persona` | `/persona/` | nome, cognome, email, telefono, ruolo, storico incarichi |
+| `servizio` | single | descrizione, prenotazione opzionale |
+| `bando` | `/bandi/{anno}/{slug}/` | tipo, importo, CIG, CPV, date, allegati, termini, aggiudicatari |
+| `appuntamento` | admin | prenotazioni (dati richiedente, data, servizio) |
 
-## Hooks e Filtri
+I metabox usano CMB2 (inclusa in `wp-digital-italia-extension/`).
 
-### Filtri Utili
+## Prenotazione appuntamenti
 
-- `wpdi_breadcrumbs_defaults`: Personalizza le opzioni dei breadcrumb
-- `digital_italia_custom_background_args`: Personalizza il background
+Gestione slot (singoli e generazione per intervallo di date), giorni di chiusura, calendario guidato lato cittadino (mese → giorno → orario), email di conferma. Crea le tabelle `wp_booking_slots`, `wp_booking_reservations`, `wp_booking_closed_days` all'attivazione. Endpoint AJAX pubblici: `get_available_appointments`, `submit_booking`; admin: `swb_*` (slot, giorni di chiusura).
 
-### Funzioni Helper
+## Cookie consent (GDPR)
 
-- `wpdi_get_breadcrumbs($args)`: Restituisce l'HTML dei breadcrumb
-- `wpdi_breadcrumbs($args)`: Stampa i breadcrumb
-- `get_menu_by_location($location)`: Ottiene le voci menu per location
-- `dci_filter_uo_with_services($uos)`: Filtra UO che offrono servizi
-- `dci_uo_offers_service($uo_id, $service_id)`: Verifica se una UO offre un servizio
+Banner e modale preferenze con consensi granulari (analytics, marketing, social, YouTube). Ogni categoria ha un oggetto in `cookiesDispatcher` con `activate` e `fallback`; per personalizzarlo in un child theme caricare il proprio script dopo `cookies-dispatcher` e ridefinire le callback.
 
-## API AJAX
+## Demo multisite
 
-### Frontend (pubbliche)
+`inc/demo-switcher.php` mostra, sui sottositi di una rete multisite, una barra per passare da una demo all'altra. È disattivata di default: si abilita con l'opzione di rete `dci_demo_switcher`.
 
-- `get_available_appointments`: Ottiene mesi/giorni/slot disponibili
-- `submit_booking`: Invia una prenotazione
+## Integrazioni
 
-### Admin (autenticazione richiesta)
+Elementor (breadcrumb e ottimizzazione risorse), Jetpack, override del blocco *Ultimi articoli* con le card Bootstrap Italia. Breadcrumb con microdata Schema.org (`wpdi_breadcrumbs()`, filtro `wpdi_breadcrumbs_defaults`).
 
-- `swb_get_slots`: Ottiene slot per mese
-- `swb_delete_slot`: Elimina uno slot
-- `swb_quick_add_slot`: Aggiunge rapidamente uno slot
-- `swb_generate_range`: Genera slot per un range di date
-- `swb_bulk_delete_month`: Elimina tutti gli slot di un mese
-- `swb_add_closed_day`: Aggiunge un giorno di chiusura
-- `swb_remove_closed_day`: Rimuove un giorno di chiusura
-
-## File Structure
+## Struttura
 
 ```
-wp-digital-italia/
-├── bootstrap-italia/          # Framework Bootstrap Italia
-├── classes/                   # Walker per menu
-├── inc/
-│   ├── admin/tipologie/       # Custom Post Types
-│   ├── includes/              # Sistema booking
-│   ├── lib/                   # Librerie (CMB2, TGM, etc.)
-│   └── *.php                  # Funzionalità core
-├── js/                        # JavaScript frontend
-├── assets/                    # CSS, immagini
-├── page-templates/            # Template di pagina
-├── template-parts/            # Parti di template
-├── wp-digital-italia-extension/ # Estensioni CPT
-└── *.php                      # File template principali
+wp-pa-theme/
+├── assets/            # immagini (placeholder news), CSS e JS non compilati (booking, cookie)
+├── classes/           # walker dei menu (Bootstrap 5)
+├── dist/              # asset compilati (versionati)
+├── inc/               # helper, opzioni tema, customizer, booking, breadcrumb
+├── page-templates/    # home, organigramma, full, booking
+├── src/               # sorgenti SCSS/JS
+├── template-parts/    # parti di template (home, contenuti, cookie, prenotazione)
+├── wp-digital-italia-extension/   # CPT e CMB2
+└── *.php              # template principali
 ```
 
-## Contributi
+## Licenza e contatti
 
-Contributi benvenuti! Apri una issue o una pull request sul repository.
-
-## Licenza
-
-Distribuito sotto licenza MIT.
-
-## Contatti
-
-Per assistenza: [luca.terribili@tten.it](mailto:luca.terribili@tten.it)
+GPL v2 o successiva. Assistenza: luca.terribili@tten.it

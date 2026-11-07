@@ -18,7 +18,7 @@ $top = get_posts( array( 'post_type' => 'dipartimento', 'post_parent' => 0, 'num
 
 	<div class="container-fluid pb-5">
 		<div class="row g-4">
-			<div class="col-lg-8">
+			<div class="col-lg-9 order-lg-2">
 				<?php while ( have_posts() ) : the_post(); ?>
 					<div class="entry-content mb-4"><?php the_content(); ?></div>
 				<?php endwhile; ?>
@@ -58,15 +58,7 @@ $top = get_posts( array( 'post_type' => 'dipartimento', 'post_parent' => 0, 'num
 					<?php endforeach; ?>
 				</div>
 			</div>
-			<aside class="col-lg-4" aria-label="<?php esc_attr_e( 'Navigazione', 'wp-digital-italia' ); ?>">
-				<nav class="dci-sidenav">
-					<ul>
-						<li><a href="<?php echo esc_url( get_post_type_archive_link( 'dipartimento' ) ); ?>"><?php esc_html_e( 'Elenco strutture', 'wp-digital-italia' ); ?></a></li>
-						<li><a href="<?php echo esc_url( get_post_type_archive_link( 'persona' ) ); ?>"><?php esc_html_e( 'Persone', 'wp-digital-italia' ); ?></a></li>
-						<li><a href="<?php echo esc_url( get_post_type_archive_link( 'bando' ) ); ?>"><?php esc_html_e( 'Bandi e concorsi', 'wp-digital-italia' ); ?></a></li>
-					</ul>
-				</nav>
-			</aside>
+			<div class="col-lg-3 order-lg-1"><?php get_sidebar(); ?></div>
 		</div>
 	</div>
 </main>

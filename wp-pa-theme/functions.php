@@ -177,6 +177,7 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/layout-helpers.php';
 require get_template_directory() . '/inc/theme-options.php';
+require get_template_directory() . '/inc/demo-switcher.php';
 
 /**
  * Load Jetpack compatibility file.

@@ -19,7 +19,7 @@ get_header();
         </header>
 
         <div class="row g-4">
-            <div class="col">
+            <div class="col-lg-9 order-lg-2">
                 <section class="px-3">
                     <?php
                     $persona_query = new WP_Query( array(
@@ -127,7 +127,7 @@ get_header();
                     <?php endif; ?>
                 </section>
             </div>
-            <div class="col-lg-4 col-xxl-auto">
+            <div class="col-lg-3 order-lg-1">
                 <?php get_sidebar(); ?>
             </div>
         </div>

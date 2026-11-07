@@ -16,17 +16,8 @@ $org = dci_get_template_page_url( 'page-templates/page-organigramma.php' );
 	</header>
 	<div class="container-fluid pb-5">
 		<div class="row g-4">
-			<aside class="col-lg-3" aria-label="<?php esc_attr_e( 'Indice strutture', 'wp-digital-italia' ); ?>">
-				<nav class="dci-sidenav">
-					<ul>
-						<?php foreach ( $top as $s ) : ?>
-							<li><a href="#struttura-<?php echo (int) $s->ID; ?>"><?php echo esc_html( get_the_title( $s ) ); ?></a></li>
-						<?php endforeach; ?>
-						<?php if ( $org ) : ?><li><a href="<?php echo esc_url( $org ); ?>"><?php esc_html_e( 'Organigramma', 'wp-digital-italia' ); ?></a></li><?php endif; ?>
-					</ul>
-				</nav>
-			</aside>
-			<div class="col-lg-9">
+			<div class="col-lg-3 order-lg-1"><?php get_sidebar(); ?></div>
+			<div class="col-lg-9 order-lg-2">
 				<ul class="dci-list">
 					<?php foreach ( $top as $s ) :
 						$resp_id  = (int) get_post_meta( $s->ID, '_dci_dipartimento_responsabile', true );

@@ -9,7 +9,7 @@ get_header();
 
 <main id="primary" class="container-fluid py-2 py-md-5">
     <div class="row">
-        <div class="col-lg">
+        <div class="col-lg-9 order-lg-2">
             <div class="px-3">
 
                 <?php
@@ -44,6 +44,9 @@ get_header();
                 ?>
 
             </div>
+        </div>
+        <div class="col-lg-3 order-lg-1">
+            <?php get_sidebar(); ?>
         </div>
     </div>
     <!-- /ROW -->

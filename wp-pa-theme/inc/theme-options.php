@@ -60,17 +60,17 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 		'type'    => 'select',
 		'choices' => array( 0 => __( 'Tutte', 'wp-digital-italia' ) ) + wp_list_pluck( get_categories( array( 'hide_empty' => false ) ), 'name', 'term_id' ),
 	) );
+
+	$wp->add_setting( 'dci_sidebar_contact_title', array( 'default' => '', 'sanitize_callback' => 'sanitize_text_field' ) );
+	$wp->add_control( 'dci_sidebar_contact_title', array( 'section' => 'dci_layout', 'label' => __( 'Sidebar: titolo del box contatti (es. "Prenotazioni")', 'wp-digital-italia' ), 'type' => 'text' ) );
+	$wp->add_setting( 'dci_sidebar_hours', array( 'default' => '', 'sanitize_callback' => 'sanitize_textarea_field' ) );
+	$wp->add_control( 'dci_sidebar_hours', array( 'section' => 'dci_layout', 'label' => __( 'Sidebar: orari (uno per riga). Il telefono è quello dei Contatti del sito.', 'wp-digital-italia' ), 'type' => 'textarea' ) );
 } );
 
 add_filter( 'body_class', function ( array $classes ): array {
 	$classes[] = 'layout-' . dci_layout_mode();
 	return $classes;
 } );
-
-/** URL immagine placeholder (ciclica) per lo slider. */
-function dci_hero_placeholder( int $index ): string {
-	return get_template_directory_uri() . '/assets/images/hero-placeholder-' . ( $index % 3 + 1 ) . '.svg';
-}
 
 /** Senza logo caricato, mostra il nome del sito come marchio testuale. */
 add_filter( 'get_custom_logo', function ( $html ) {

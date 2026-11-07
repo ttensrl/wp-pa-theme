@@ -1,13 +1,6 @@
 <?php
 /** Accesso rapido: fascia blu a tutta larghezza con tile a icona tonda. */
-$org_url = $args['org_url'] ?? '';
-$tiles   = array_filter( array(
-	array( 'Strutture', 'pa', get_post_type_archive_link( 'dipartimento' ) ),
-	array( 'Organigramma', 'user', $org_url ),
-	array( 'Bandi e concorsi', 'files', get_post_type_archive_link( 'bando' ) ),
-	array( 'Notizie', 'calendar', get_permalink( (int) get_option( 'page_for_posts' ) ) ?: '' ),
-	array( 'Persone', 'user', get_post_type_archive_link( 'persona' ) ),
-), fn( $t ) => ! empty( $t[2] ) );
+$tiles = dci_quick_links();
 ?>
 <section class="dci-quick" aria-labelledby="quick-title">
 	<div class="container-fluid">

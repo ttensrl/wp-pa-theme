@@ -28,6 +28,7 @@ $year = get_query_var( 'bando_year' );
 		</header>
 
 		<div class="container-fluid pb-5">
+			<div class="row g-4"><div class="col-lg-9 order-lg-2">
 			<?php
 			$years = $wpdb->get_col( "
 				SELECT DISTINCT YEAR( pm.meta_value )
@@ -62,6 +63,8 @@ $year = get_query_var( 'bando_year' );
 			<?php else : ?>
 				<?php get_template_part( 'template-parts/content', 'none' ); ?>
 			<?php endif; ?>
+			</div>
+			<div class="col-lg-3 order-lg-1"><?php get_sidebar(); ?></div></div>
 		</div>
 
 	</main>

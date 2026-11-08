@@ -1,16 +1,575 @@
+/*
+ * Profilo Scuola — allineato a federicocaffe.edu.it (tema NEWMIUR)
+ * Pre-header blu notte con contatti e area riservata, testata bianca con
+ * marchio scomposto e ricerca, navigazione chiara in maiuscolo, footer scuro.
+ */
+
 :root {
-	--bs-primary: #6a3fa0;
-	--bs-primary-rgb: 106, 63, 160;
-	--bs-link-color: #6a3fa0;
-	--bs-link-hover-color: #432471;
+	--scuola-blue: hsl(210, 100%, 32%);
+	--scuola-blue-rgb: 0, 90, 163;
+	--scuola-preheader: hsl(210, 100%, 15%);
+	--scuola-blue-hover: hsl(210, 100%, 26%);
+	--scuola-footer: hsl(210, 12%, 21%);
+	--scuola-footer-link: #65d5d4;
+
+	--bs-primary: hsl(210, 100%, 32%);
+	--bs-primary-rgb: 0, 90, 163;
+	--bs-link-color: hsl(210, 100%, 32%);
+	--bs-link-hover-color: hsl(210, 100%, 26%);
+	--bs-link-color-rgb: 0, 90, 163;
+	--bs-link-hover-color-rgb: 0, 73, 133;
 }
-.it-header-slim-wrapper { background: #432471 !important; }
-.it-header-navbar-wrapper, .it-header-navbar-wrapper .navbar { background: #6a3fa0 !important; }
-.btn-primary, .btn.btn-primary:disabled { background-color: #6a3fa0; border-color: #6a3fa0; }
-.btn-primary:hover { background-color: #432471; border-color: #432471; }
-.btn-outline-primary { color: #6a3fa0; box-shadow: inset 0 0 0 2px #6a3fa0; }
-a, .nav-tabs .nav-link:not(.active), .accordion-button.collapsed { color: #6a3fa0; }
-.it-footer-main, footer .it-footer-main { background: #432471; }
-.it-brand-wrapper a, .dci-brand-text { color: #6a3fa0 !important; }
-.it-header-center-wrapper .it-search-wrapper .rounded-icon, .it-header-center-wrapper .rounded-icon { background: #6a3fa0 !important; }
-.it-search-wrapper > span { color: #6a3fa0; }
+
+.btn-primary,
+.btn.btn-primary:disabled {
+	background-color: var(--scuola-blue);
+	border-color: var(--scuola-blue);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+	background-color: var(--scuola-blue-hover);
+	border-color: var(--scuola-blue-hover);
+}
+
+/* ------------------------------------------------------------------ *
+ * Pre-header
+ * ------------------------------------------------------------------ */
+.dci-scuola-header #pre-header {
+	background: var(--scuola-preheader);
+	color: #fff;
+	padding-block: .55rem;
+	font-size: .875rem;
+}
+
+.dci-scuola-header #pre-header .it-header-slim-wrapper-content {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.dci-scuola-header #pre-header .navbar-brand {
+	margin: 0;
+	color: #fff;
+	font-size: .9rem;
+	font-weight: 700;
+	line-height: 1.25;
+	text-transform: uppercase;
+	letter-spacing: .01em;
+	text-decoration: none;
+}
+
+.dci-scuola-header #pre-header a {
+	color: #fff;
+}
+
+.dci-scuola-area {
+	background: var(--scuola-blue);
+	border: 1px solid var(--scuola-blue);
+	border-radius: 0;
+	color: #fff;
+	font-weight: 600;
+	padding: .3rem .9rem;
+	text-decoration: none;
+}
+
+.dci-scuola-area:hover,
+.dci-scuola-area:focus {
+	background: var(--scuola-blue-hover);
+	border-color: var(--scuola-blue-hover);
+	color: #fff;
+}
+
+/* Contatti a tendina nel pre-header */
+.dci-scuola-contacts {
+	display: flex;
+	align-items: center;
+	gap: .25rem;
+}
+
+.dci-scuola-contacts .dci-contact__toggle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	padding: 0;
+	background: transparent;
+	border: 0;
+	color: #fff;
+	cursor: pointer;
+}
+
+.dci-scuola-contacts .dci-contact__toggle .icon {
+	fill: #8ec8f0;
+	width: 18px;
+	height: 18px;
+}
+
+.dci-scuola-contacts .dci-contact__toggle:hover .icon,
+.dci-scuola-contacts .dci-contact__toggle:focus .icon {
+	fill: #fff;
+}
+
+.dci-scuola-contacts .dropdown-menu {
+	border-radius: 0;
+	border: 0;
+	padding: 0;
+	min-width: 250px;
+}
+
+.dci-scuola-contacts .dropdown-menu .link-list-wrapper ul li a {
+	color: var(--scuola-preheader);
+	font-size: .85rem;
+	padding: .6rem .9rem;
+}
+
+/* ------------------------------------------------------------------ *
+ * Testata
+ * ------------------------------------------------------------------ */
+.dci-scuola-header .it-header-center-wrapper {
+	background: #fff;
+	min-height: 96px;
+	height: auto;
+	border-bottom: 1px solid #e6e6e6;
+}
+
+.dci-scuola-header .it-header-center-content-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
+	flex-wrap: wrap;
+	padding-block: 1rem;
+}
+
+.dci-scuola-brand .dci-brand {
+	display: flex;
+	align-items: center;
+	gap: .9rem;
+	text-decoration: none;
+}
+
+.dci-scuola-brand .dci-brand__logo {
+	max-height: 72px;
+	width: auto;
+}
+
+.dci-scuola-brand .it-brand-subtitle {
+	color: #5d7083;
+	font-size: .8rem;
+	font-weight: 400;
+	text-transform: none;
+	letter-spacing: .01em;
+}
+
+.dci-scuola-brand .it-brand-title {
+	color: var(--scuola-blue);
+	font-size: clamp(1.3rem, 2.3vw, 1.75rem);
+	font-weight: 700;
+	line-height: 1.15;
+}
+
+.dci-scuola-brand .it-brand-tagline {
+	color: #5d7083;
+	font-size: .85rem;
+}
+
+/* Ricerca inline */
+.dci-scuola-search {
+	margin: 0;
+}
+
+.dci-scuola-search .dci-search-form__inner {
+	display: flex;
+	align-items: center;
+	border-bottom: 2px solid var(--scuola-blue);
+}
+
+.dci-scuola-search label {
+	display: none;
+}
+
+.dci-scuola-search input[type="search"] {
+	width: 240px;
+	padding: .35rem .5rem;
+	border: 0;
+	background: transparent;
+	font-size: .9rem;
+	color: #2f3740;
+}
+
+.dci-scuola-search input[type="search"]:focus {
+	outline: none;
+}
+
+.dci-scuola-search .dci-search-form__btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 34px;
+	height: 34px;
+	padding: 0;
+	background: transparent;
+	border: 0;
+	color: var(--scuola-blue);
+	cursor: pointer;
+}
+
+.dci-scuola-search .dci-search-form__btn .icon {
+	fill: var(--scuola-blue);
+}
+
+.dci-scuola-search .dci-search-form__btn:hover .icon {
+	fill: var(--scuola-blue-hover);
+}
+
+/* ------------------------------------------------------------------ *
+ * Navigazione
+ * ------------------------------------------------------------------ */
+.dci-scuola-header .it-header-navbar-wrapper {
+	background: #fff;
+	box-shadow: 0 2px 10px rgba(20, 40, 60, .08);
+}
+
+.dci-scuola-navbar.navbar {
+	background: transparent;
+	padding-block: 0;
+}
+
+.dci-scuola-navbar .navbar-collapsable .menu-wrapper {
+	width: 100%;
+	background: transparent;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.dci-scuola-navbar .navbar-collapsable .navbar-nav {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.dci-scuola-navbar .navbar-collapsable .navbar-nav li a.nav-link {
+	display: flex;
+	align-items: center;
+	gap: .35rem;
+	padding: 14px 20px;
+	color: var(--scuola-blue);
+	font-size: 1rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	text-decoration: none;
+	border: 0;
+	border-bottom: 3px solid transparent;
+}
+
+.dci-scuola-navbar .navbar-collapsable .navbar-nav li a.nav-link:hover,
+.dci-scuola-navbar .navbar-collapsable .navbar-nav li a.nav-link:focus {
+	color: var(--scuola-blue-hover);
+	border-bottom-color: var(--scuola-blue);
+}
+
+.dci-scuola-navbar .navbar-collapsable .navbar-nav li a.nav-link.active,
+.dci-scuola-navbar .navbar-collapsable .navbar-nav li.current-menu-item > a.nav-link,
+.dci-scuola-navbar .navbar-collapsable .navbar-nav li.current-menu-ancestor > a.nav-link {
+	border-bottom-color: var(--scuola-blue);
+}
+
+.dci-scuola-navbar .navbar-collapsable .navbar-nav li a.nav-link .icon {
+	fill: currentColor;
+	transition: transform .2s ease-in-out;
+}
+
+.dci-scuola-navbar .navbar-collapsable .navbar-nav li a.nav-link[aria-expanded="true"] .icon {
+	transform: rotate(180deg);
+}
+
+.dci-scuola-navbar .navbar-collapsable .navbar-nav.navbar-secondary {
+	justify-content: flex-end;
+}
+
+.dci-scuola-navbar .navbar-collapsable .navbar-nav.navbar-secondary li a.nav-link {
+	font-size: .85rem;
+	font-weight: 400;
+	padding: 14px 12px;
+	border-bottom: 0;
+}
+
+.dci-scuola-navbar .dropdown-menu {
+	border-radius: 0;
+	border: 0;
+	padding: 0;
+	min-width: 250px;
+	box-shadow: 0 8px 24px rgba(20, 40, 60, .16);
+}
+
+.dci-scuola-navbar .dropdown-menu .link-list-wrapper ul li a {
+	color: var(--scuola-blue);
+	font-size: .9rem;
+	padding: .6rem 1rem;
+	text-transform: none;
+}
+
+.dci-scuola-navbar .dropdown-menu .link-list-wrapper ul li a:hover,
+.dci-scuola-navbar .dropdown-menu .link-list-wrapper ul li a:focus {
+	background: #eef4f9;
+	color: var(--scuola-blue-hover);
+}
+
+/* ------------------------------------------------------------------ *
+ * Footer
+ * ------------------------------------------------------------------ */
+.dci-scuola-footer {
+	margin-top: 3rem;
+	background: var(--scuola-footer);
+	color: #fff;
+	padding-block: 1.5rem 0;
+}
+
+.dci-scuola-footer a {
+	color: var(--scuola-footer-link);
+	text-decoration: none;
+}
+
+.dci-scuola-footer a:hover,
+.dci-scuola-footer a:focus {
+	color: #fff;
+	text-decoration: underline;
+}
+
+.dci-scuola-footer__brand-row {
+	padding-block: 1rem;
+}
+
+.dci-scuola-footer__brand .dci-brand {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	color: #fff;
+	text-decoration: none;
+}
+
+.dci-scuola-footer__brand .dci-brand__logo {
+	max-height: 76px;
+	width: auto;
+}
+
+.dci-scuola-footer__brand .it-brand-title {
+	color: #fff;
+	font-size: clamp(1.1rem, 2vw, 1.5rem);
+	font-weight: 700;
+}
+
+.dci-scuola-footer__brand .it-brand-subtitle,
+.dci-scuola-footer__brand .it-brand-tagline {
+	color: rgba(255, 255, 255, .8);
+	font-size: .85rem;
+}
+
+.dci-scuola-footer__logos {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: .75rem;
+	flex-wrap: wrap;
+}
+
+.dci-scuola-footer__logos a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 74px;
+	height: 44px;
+	padding: 0 .9rem;
+	background: #fff;
+	color: var(--scuola-preheader);
+	font-size: .85rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: .03em;
+}
+
+.dci-scuola-footer__center {
+	padding-block: 1.5rem;
+}
+
+.dci-scuola-footer__section {
+	padding-block: .75rem;
+}
+
+.dci-scuola-footer__title {
+	color: #fff;
+	font-size: 1.05rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	margin-bottom: .65rem;
+}
+
+.dci-scuola-footer hr {
+	border-color: rgba(255, 255, 255, .35);
+	margin-block: .5rem 1rem;
+}
+
+.dci-scuola-footer__contacts,
+.dci-scuola-footer__menu {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: .9rem;
+	line-height: 1.9;
+}
+
+.dci-scuola-footer__menu li {
+	line-height: 2;
+}
+
+.dci-scuola-footer__bottom {
+	border-top: 1px solid rgba(255, 255, 255, .18);
+	padding-block: 1rem;
+	font-size: .85rem;
+}
+
+.dci-scuola-footer__prints {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .35rem 1.25rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.dci-scuola-footer__prints li {
+	margin: 0;
+}
+
+.dci-scuola-footer__socials {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.dci-scuola-footer__socials .dci-socials {
+	display: flex;
+	align-items: center;
+	gap: .5rem;
+	color: #fff;
+}
+
+.dci-scuola-footer__socials ul {
+	display: flex;
+	gap: .5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.dci-scuola-footer__socials .icon {
+	fill: #fff;
+	width: 20px;
+	height: 20px;
+}
+
+.dci-scuola-footer__socials a:hover .icon {
+	fill: var(--scuola-footer-link);
+}
+
+/* ------------------------------------------------------------------ *
+ * Mobile / tablet
+ * ------------------------------------------------------------------ */
+@media (max-width: 991.98px) {
+	.dci-scuola-header .it-nav-wrapper .it-header-navbar-wrapper {
+		position: static;
+		width: 100%;
+		margin-top: 0;
+		padding-block: .25rem;
+	}
+
+	.dci-scuola-header .it-header-center-wrapper {
+		min-height: 0;
+	}
+
+	.dci-scuola-header .it-header-center-content-wrapper {
+		padding-block: .85rem;
+	}
+
+	.dci-scuola-brand .dci-brand__logo {
+		max-height: 56px;
+	}
+
+	.dci-scuola-navbar.navbar {
+		background: transparent;
+		padding-block: .25rem;
+	}
+
+	.dci-scuola-navbar .custom-navbar-toggler {
+		display: inline-flex;
+		align-items: center;
+		gap: .5rem;
+		background: transparent;
+		border: 0;
+		padding: .5rem 0;
+		color: var(--scuola-blue);
+	}
+
+	.dci-scuola-navbar .custom-navbar-toggler .icon {
+		fill: var(--scuola-blue);
+	}
+
+	.dci-scuola-navbar .navbar-collapsable {
+		background: #fff;
+	}
+
+	.dci-scuola-navbar .navbar-collapsable .menu-wrapper {
+		background: #fff;
+		flex-direction: column;
+		align-items: stretch;
+		justify-content: flex-start;
+		gap: 0;
+	}
+
+	.dci-scuola-navbar .navbar-collapsable .menu-wrapper > .it-brand-wrapper {
+		padding: .9rem 1rem;
+		border-bottom: 1px solid #e6ecf2;
+	}
+
+	.dci-scuola-navbar .navbar-collapsable .menu-wrapper > .it-brand-wrapper .dci-brand {
+		text-decoration: none;
+	}
+
+	.dci-scuola-navbar .navbar-collapsable .menu-wrapper > .it-brand-wrapper .it-brand-subtitle {
+		color: #5d7083;
+	}
+
+	.dci-scuola-navbar .navbar-collapsable .menu-wrapper > .it-brand-wrapper .it-brand-title {
+		color: var(--scuola-blue);
+		font-size: 1.15rem;
+	}
+
+	.dci-scuola-navbar .navbar-collapsable .navbar-nav {
+		flex-direction: column;
+	}
+
+	.dci-scuola-navbar .navbar-collapsable .navbar-nav li a.nav-link {
+		border-bottom: 1px solid #e6ecf2;
+	}
+
+	.dci-scuola-navbar .navbar-collapsable .navbar-nav.navbar-secondary {
+		justify-content: flex-start;
+	}
+
+	.dci-scuola-footer__logos {
+		justify-content: flex-start;
+	}
+
+	.dci-scuola-footer__socials {
+		justify-content: flex-start;
+		margin-top: .5rem;
+	}
+}

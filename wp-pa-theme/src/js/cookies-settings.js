@@ -18,6 +18,14 @@ preferencesLink.addEventListener("click", function (event) {
     cookieModal.show();
 });
 
+// "Solo cookies tecnici" / "Accetta tutti": impostano le checkbox prima della chiusura del banner
+banner.querySelectorAll('[data-dci-consent]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+        const all = btn.dataset.dciConsent === 'all';
+        document.querySelectorAll('.cookie-option').forEach((box) => { box.checked = all; });
+    });
+});
+
 banner.addEventListener(EVENT_CLOSE, function (event) {
     history.replaceState(null, null, ' ');
     window.dispatchEvent(new HashChangeEvent("hashchange"));

@@ -6,6 +6,7 @@ require_once(get_template_directory() . '/inc/block-functions.php');
 require_once(get_template_directory() . '/inc/elementor-support.php');
 require_once(get_template_directory() . '/inc/utils.php');
 require_once(get_template_directory() . '/inc/breadcrumbs.php');
+require_once(get_template_directory() . '/inc/header-footer.php');
 // EXTENSION
 require_once(get_template_directory() . '/wp-digital-italia-extension/wp-digital-italia-extension.php');
 /**
@@ -70,6 +71,8 @@ function digital_italia_setup(): void
             'footer-three' => esc_html__( 'Footer Three', 'wp-digital-italia' ),
             'footer-four' => esc_html__( 'Footer Four', 'wp-digital-italia' ),
             'footer-bottom' => esc_html__( 'Footer Bottom', 'wp-digital-italia' ),
+            'secondary-menu' => esc_html__( 'Secondary Menu (argomenti)', 'wp-digital-italia' ),
+            'utility-menu' => esc_html__( 'Utility Menu (fascia alta)', 'wp-digital-italia' ),
         )
     );
 

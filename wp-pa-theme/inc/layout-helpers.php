@@ -99,3 +99,35 @@ function dci_sidebar_nav(): array {
 	}
 	return array( $title, $items );
 }
+
+/** Data breve in maiuscolo, es. "6 NOV 2026". */
+function dci_short_date( $post = null ): string {
+	return mb_strtoupper( get_the_date( 'j M Y', $post ) );
+}
+
+/** Immagine di un articolo: URL della thumbnail o stringa vuota (la card mostra il placeholder). */
+function dci_post_image_url( $post = null, string $size = 'large' ): string {
+	return has_post_thumbnail( $post ) ? (string) get_the_post_thumbnail_url( $post, $size ) : '';
+}
+
+/** Ultimi articoli come WP_Query. */
+function dci_latest_posts( int $n = 6, int $offset = 0 ): WP_Query {
+	return new WP_Query( array(
+		'posts_per_page'      => $n,
+		'offset'              => $offset,
+		'post_status'         => 'publish',
+		'ignore_sticky_posts' => true,
+	) );
+}
+
+/** Ultimi bandi (ordinati per data di pubblicazione). */
+function dci_latest_bandi( int $n = 5 ): WP_Query {
+	return new WP_Query( array(
+		'post_type'      => 'bando',
+		'posts_per_page' => $n,
+		'post_status'    => 'publish',
+		'meta_key'       => '_dci_bando_data_publish',
+		'orderby'        => 'meta_value',
+		'order'          => 'DESC',
+	) );
+}

@@ -1,2 +1,535 @@
-/* Child ASL: nessun override di colori/font, si usa il profilo del parent (Titillium + palette Bootstrap Italia).
-   Aggiungere qui solo personalizzazioni specifiche ASL (loghi, spaziature). */
+/*
+ * Profilo ASL Roma 1 — allineato a https://www.aslroma1.it/
+ * Fascia istituzionale blu, testata bianca con area personale SPID/CIE,
+ * navigazione chiara e footer grigio chiaro.
+ */
+
+:root {
+	--asl-blue: #039;
+	--asl-blue-rgb: 0, 51, 153;
+	--asl-topbar: #2d4f85;
+	--asl-link: #0167cb;
+	--asl-link-hover: #015aad;
+	--asl-nav-bg: #e7ecee;
+	--asl-ink: #002740;
+	--asl-footer-bg: #eeefef;
+	--asl-border: #d8d8d8;
+
+	--bs-primary: #039;
+	--bs-primary-rgb: 0, 51, 153;
+	--bs-link-color: #0167cb;
+	--bs-link-hover-color: #015aad;
+	--bs-link-color-rgb: 1, 103, 203;
+	--bs-link-hover-color-rgb: 1, 90, 173;
+}
+
+.it-header-navbar-wrapper {
+	background: var(--asl-nav-bg) !important;
+}
+
+.btn-primary,
+.btn.btn-primary:disabled {
+	background-color: var(--asl-link);
+	border-color: var(--asl-link);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+	background-color: var(--asl-link-hover);
+	border-color: var(--asl-link-hover);
+}
+
+/* ------------------------------------------------------------------ *
+ * Fascia alta
+ * ------------------------------------------------------------------ */
+.dci-asl-topbar {
+	background: var(--asl-topbar);
+	color: #fff;
+	font-family: "Titillium Web", sans-serif;
+	font-size: .875rem;
+	font-weight: 700;
+	line-height: 50px;
+}
+
+.dci-asl-topbar__inner {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+	min-height: 50px;
+}
+
+.dci-asl-topbar__link {
+	color: #fff;
+	text-decoration: none;
+}
+
+.dci-asl-topbar__link:hover,
+.dci-asl-topbar__link:focus {
+	color: #fff;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.dci-asl-topbar__ente {
+	order: 2;
+	margin-left: auto;
+	opacity: .85;
+	font-weight: 400;
+}
+
+/* ------------------------------------------------------------------ *
+ * Testata
+ * ------------------------------------------------------------------ */
+.dci-asl-masthead {
+	background: #fff;
+	border-bottom: 1px solid #e6e6e6;
+}
+
+.dci-asl-masthead__inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 2rem;
+	padding-block: 1.5rem;
+	flex-wrap: wrap;
+}
+
+.dci-asl-brand .dci-brand {
+	text-decoration: none;
+}
+
+.dci-asl-brand .dci-brand__logo {
+	max-height: 88px;
+	width: auto;
+}
+
+.dci-asl-brand .it-brand-title {
+	color: var(--asl-blue);
+	font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+	font-weight: 700;
+	line-height: 1.15;
+}
+
+.dci-asl-brand .it-brand-subtitle {
+	color: #5d7083;
+	font-size: .95rem;
+	font-weight: 400;
+	text-transform: none;
+	letter-spacing: 0;
+}
+
+.dci-asl-brand .it-brand-tagline {
+	color: #5d7083;
+	font-size: .9rem;
+}
+
+.dci-asl-tools {
+	display: flex;
+	align-items: center;
+	gap: 1.25rem;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+}
+
+/* Area personale SPID/CIE */
+.dci-asl-areapersonale {
+	display: inline-flex;
+	align-items: center;
+	gap: .75rem;
+	height: 42px;
+	padding: 0 1.25rem;
+	background: var(--asl-link);
+	color: #fff;
+	font-size: .875rem;
+	font-weight: 600;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.dci-asl-areapersonale:hover,
+.dci-asl-areapersonale:focus {
+	background: var(--asl-link-hover);
+	color: #fff;
+	text-decoration: none;
+}
+
+.dci-asl-areapersonale__ids {
+	display: inline-flex;
+	align-items: center;
+	gap: .6rem;
+	padding-left: .75rem;
+	border-left: 1px solid rgba(255, 255, 255, .45);
+}
+
+/* Loghi istituzionali SPID e CIE (asset AgID / Ministero dell'Interno, versione su fondo blu) */
+.dci-asl-id {
+	display: block;
+	width: auto;
+	max-width: none;
+}
+
+.dci-asl-id--spid { height: 26px; }
+.dci-asl-id--cie { height: 30px; }
+
+/* Social */
+.dci-asl-socials {
+	display: flex;
+	align-items: center;
+}
+
+.dci-asl-socials ul {
+	display: flex;
+	gap: .35rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.dci-asl-socials a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 38px;
+	height: 38px;
+	background: #f0f2f3;
+	color: var(--asl-ink);
+	transition: background-color .2s ease-in-out, color .2s ease-in-out;
+}
+
+.dci-asl-socials a:hover,
+.dci-asl-socials a:focus {
+	background: var(--asl-link);
+	color: #fff;
+}
+
+.dci-asl-socials .icon {
+	fill: currentColor;
+	width: 20px;
+	height: 20px;
+}
+
+/* Ricerca */
+.dci-asl-search-toggle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 42px;
+	height: 42px;
+	padding: 0;
+	background: #fff;
+	border: 1px solid #c9d2d7;
+	color: var(--asl-ink);
+	cursor: pointer;
+}
+
+.dci-asl-search-toggle:hover,
+.dci-asl-search-toggle:focus {
+	background: var(--asl-link);
+	border-color: var(--asl-link);
+	color: #fff;
+}
+
+.dci-asl-search-toggle .icon {
+	fill: currentColor;
+}
+
+/* ------------------------------------------------------------------ *
+ * Navigazione
+ * ------------------------------------------------------------------ */
+.dci-asl-nav {
+	background: var(--asl-nav-bg);
+}
+
+.dci-asl-nav .container {
+	padding-block: 0;
+}
+
+.dci-asl-navbar.navbar {
+	background: transparent;
+	padding-block: 0;
+}
+
+.dci-asl-navbar .navbar-collapsable .menu-wrapper {
+	width: 100%;
+	background: transparent;
+}
+
+.dci-asl-navbar .navbar-collapsable .navbar-nav {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	justify-content: flex-start;
+}
+
+.dci-asl-navbar .navbar-collapsable .navbar-nav > li {
+	margin: 0;
+}
+
+.it-header-navbar-wrapper .dci-asl-navbar .navbar-collapsable .navbar-nav li a.nav-link {
+	display: block;
+	padding: 12px 16px;
+	color: var(--asl-ink);
+	font-size: .8125rem;
+	font-weight: 400;
+	letter-spacing: .02em;
+	line-height: 1.4;
+	border: 0;
+	transition: background-color .3s ease-in-out, color .3s ease-in-out;
+}
+
+.it-header-navbar-wrapper .dci-asl-navbar .navbar-collapsable .navbar-nav li a.nav-link:hover,
+.it-header-navbar-wrapper .dci-asl-navbar .navbar-collapsable .navbar-nav li a.nav-link:focus,
+.it-header-navbar-wrapper .dci-asl-navbar .navbar-collapsable .navbar-nav li a.nav-link.active,
+.it-header-navbar-wrapper .dci-asl-navbar .navbar-collapsable .navbar-nav li.current-menu-item > a.nav-link,
+.it-header-navbar-wrapper .dci-asl-navbar .navbar-collapsable .navbar-nav li.current-menu-ancestor > a.nav-link {
+	background: #666;
+	color: #fff;
+	text-decoration: none;
+}
+
+.dci-asl-navbar .navbar-collapsable .navbar-nav li a.nav-link .icon {
+	fill: currentColor;
+	transition: transform .2s ease-in-out;
+}
+
+.dci-asl-navbar .navbar-collapsable .navbar-nav li a.nav-link[aria-expanded="true"] .icon {
+	transform: rotate(180deg);
+}
+
+.dci-asl-navbar .dropdown-menu {
+	border-radius: 0;
+	border: 0;
+	box-shadow: 0 6px 18px rgba(0, 40, 80, .15);
+	padding: 0;
+	min-width: 240px;
+}
+
+.dci-asl-navbar .dropdown-menu .link-list-wrapper ul li a {
+	color: var(--asl-ink);
+	font-size: .875rem;
+	padding: .65rem 1rem;
+}
+
+.dci-asl-navbar .dropdown-menu .link-list-wrapper ul li a:hover,
+.dci-asl-navbar .dropdown-menu .link-list-wrapper ul li a:focus {
+	background: var(--asl-nav-bg);
+	color: var(--asl-link);
+}
+
+/* ------------------------------------------------------------------ *
+ * Footer
+ * ------------------------------------------------------------------ */
+.dci-asl-footer {
+	background: var(--asl-footer-bg);
+	border-top: 1px solid var(--asl-border);
+	color: #2f3740;
+	margin-top: 3rem;
+}
+
+.dci-asl-footer__main {
+	padding-block: 2.5rem;
+}
+
+.dci-asl-footer a {
+	color: var(--asl-link);
+	text-decoration: none;
+}
+
+.dci-asl-footer a:hover,
+.dci-asl-footer a:focus {
+	color: var(--asl-link-hover);
+	text-decoration: underline;
+}
+
+.dci-asl-footer__brand .it-brand-title {
+	color: var(--asl-blue);
+	font-size: 1.55rem;
+	font-weight: 700;
+	line-height: 1.15;
+}
+
+.dci-asl-footer__brand .it-brand-subtitle {
+	color: #5d7083;
+	font-size: .8rem;
+	font-weight: 400;
+	letter-spacing: .02em;
+	text-transform: uppercase;
+}
+
+.dci-asl-footer__brand .dci-brand__logo {
+	max-height: 84px;
+	width: auto;
+}
+
+.dci-asl-footer__info {
+	font-size: .9rem;
+	line-height: 1.7;
+	color: #3b4a56;
+}
+
+.dci-asl-footer__info p {
+	margin-bottom: .35rem;
+}
+
+.dci-asl-footer__links {
+	margin: .75rem 0 0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	gap: .35rem 1rem;
+	font-size: .875rem;
+}
+
+.dci-asl-footer__top {
+	display: inline-flex;
+	align-items: center;
+	gap: .5rem;
+	font-size: .8125rem;
+	text-transform: uppercase;
+	letter-spacing: .04em;
+}
+
+.dci-asl-footer__bottom {
+	background: #e2e5e7;
+	border-top: 1px solid var(--asl-border);
+	padding-block: .85rem;
+	font-size: .8125rem;
+}
+
+.dci-asl-footer__bottom-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: .5rem;
+}
+
+.dci-asl-footer__prints ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .25rem 1rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.dci-asl-footer__prints li {
+	margin: 0;
+}
+
+.dci-asl-footer__prints a {
+	color: #3b4a56;
+}
+
+.dci-asl-footer .credit a {
+	color: #3b4a56;
+}
+
+.dci-asl-footer .credit .strong {
+	font-weight: 700;
+}
+
+/* ------------------------------------------------------------------ *
+ * Mobile
+ * ------------------------------------------------------------------ */
+@media (max-width: 991.98px) {
+	.dci-asl-topbar {
+		font-size: .8rem;
+	}
+
+	.dci-asl-topbar__ente {
+		display: none;
+	}
+
+	.dci-asl-masthead__inner {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1rem;
+		padding-block: 1rem;
+	}
+
+	.dci-asl-tools {
+		width: 100%;
+		justify-content: space-between;
+		gap: .75rem;
+	}
+
+	.dci-asl-brand .dci-brand__logo {
+		max-height: 62px;
+	}
+
+	.dci-asl-navbar.navbar {
+		background: transparent;
+		padding-block: .5rem;
+	}
+
+	.dci-asl-navbar .custom-navbar-toggler {
+		display: inline-flex;
+		align-items: center;
+		gap: .5rem;
+		background: transparent;
+		border: 0;
+		color: var(--asl-ink);
+		font-size: .875rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		padding: .5rem 0;
+	}
+
+	.dci-asl-navbar .custom-navbar-toggler .icon {
+		fill: currentColor;
+	}
+
+	.dci-asl-navbar .navbar-collapsable {
+		background: #fff;
+	}
+
+	.dci-asl-navbar .navbar-collapsable .menu-wrapper {
+		background: #fff;
+		flex-direction: column;
+		align-items: stretch;
+		justify-content: flex-start;
+	}
+
+	.dci-asl-navbar .navbar-collapsable .menu-wrapper > .it-brand-wrapper {
+		padding: .9rem 1rem;
+		border-bottom: 1px solid #e3e8ea;
+	}
+
+	.dci-asl-navbar .navbar-collapsable .menu-wrapper > .it-brand-wrapper .dci-brand {
+		text-decoration: none;
+	}
+
+	.dci-asl-navbar .navbar-collapsable .menu-wrapper > .it-brand-wrapper .it-brand-title {
+		color: var(--asl-blue);
+		font-size: 1.15rem;
+	}
+
+	.dci-asl-navbar .navbar-collapsable .menu-wrapper > .it-brand-wrapper .it-brand-subtitle {
+		color: #5d7083;
+	}
+
+	.dci-asl-navbar .navbar-collapsable .navbar-nav {
+		flex-direction: column;
+	}
+
+	.dci-asl-navbar .navbar-collapsable .navbar-nav li a.nav-link {
+		font-size: .95rem;
+		padding: .9rem 1rem;
+		border-bottom: 1px solid #e3e8ea;
+	}
+
+	.dci-asl-navbar .dropdown-menu {
+		box-shadow: none;
+		background: #f5f7f8;
+	}
+}
+
+/* Allineamento a aslroma1.it: menu principale a tutta larghezza, maiuscolo, con separatori */
+.dci-asl-menu { display: flex; justify-content: space-between; width: 100%; }
+.dci-asl-menu > li { flex: 1 1 auto; text-align: center; border-left: 1px solid #c7d0d9; }
+.dci-asl-menu > li:first-child { border-left: 0; }
+.dci-asl-menu > li > a { display: block; padding-inline: .75rem; text-transform: uppercase; font-size: .875rem; font-weight: 600; }

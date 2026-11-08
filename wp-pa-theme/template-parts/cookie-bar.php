@@ -50,13 +50,26 @@
 
 <!-- /COOKIES SETTINGS -->
 
-<section class="cookiebar fade" aria-label="<?php echo esc_attr__('Gestione dei cookies', 'wp-digital-italia'); ?>">
-    <?php if(!empty($banner_text)): ?>
-        <p><?php echo esc_html($banner_text); ?></p>
-    <?php endif; ?>
-    <div class="cookiebar-buttons">
-        <a href="#" id="cookies-settings" class="cookiebar-btn"><?php echo esc_html__('Preferenze', 'wp-digital-italia'); ?><span class="visually-hidden"><?php echo esc_html__('cookies', 'wp-digital-italia'); ?></span></a>
-        <button data-bs-accept="cookiebar" class="cookiebar-btn cookiebar-confirm"><?php echo esc_html__('Accetto', 'wp-digital-italia'); ?><span class="visually-hidden"><?php echo esc_html__('i cookies', 'wp-digital-italia'); ?></span></button>
+<?php
+$privacy_url = function_exists( 'get_privacy_policy_url' ) ? get_privacy_policy_url() : '';
+if ( ! $privacy_url ) {
+    $privacy_page = get_page_by_path( 'privacy' );
+    $privacy_url  = $privacy_page ? get_permalink( $privacy_page ) : '';
+}
+$default_text = __( 'Questo sito utilizza cookie tecnici di navigazione e di sessione per garantire un miglior servizio di navigazione del sito, e cookie analitici per raccogliere informazioni sull\'utilizzo del sito da parte degli utenti. Per saperne di più, o per disabilitare i cookie o abilitarne solo alcuni, consulta la nostra', 'wp-digital-italia' );
+?>
+<section class="cookiebar dci-cookiebar fade" aria-labelledby="dci-cookiebar-title" aria-label="<?php echo esc_attr__('Gestione dei cookies', 'wp-digital-italia'); ?>">
+    <button type="button" class="dci-cookiebar__close" data-bs-accept="cookiebar" data-dci-consent="necessary" aria-label="<?php echo esc_attr__('Chiudi e usa solo i cookie tecnici', 'wp-digital-italia'); ?>">
+        <?php echo dci_icon( 'close', 'icon' ); ?>
+    </button>
+    <h2 id="dci-cookiebar-title" class="dci-cookiebar__title"><?php echo esc_html__('Usiamo i cookie', 'wp-digital-italia'); ?></h2>
+    <p class="dci-cookiebar__text">
+        <?php echo esc_html( ! empty( $banner_text ) ? $banner_text : $default_text ); ?>
+        <?php if ( $privacy_url ) : ?> <a href="<?php echo esc_url( $privacy_url ); ?>"><?php echo esc_html__('Cookie Policy', 'wp-digital-italia'); ?></a>.<?php endif; ?>
+    </p>
+    <div class="dci-cookiebar__buttons">
+        <button type="button" class="dci-cb dci-cb--dark" data-bs-accept="cookiebar" data-dci-consent="necessary"><?php echo esc_html__('Solo cookies tecnici', 'wp-digital-italia'); ?></button>
+        <button type="button" class="dci-cb dci-cb--green" data-bs-accept="cookiebar" data-dci-consent="all"><?php echo esc_html__('Accetta tutti', 'wp-digital-italia'); ?></button>
+        <a href="#" id="cookies-settings" class="dci-cb dci-cb--dark"><?php echo esc_html__('Cambia le impostazioni', 'wp-digital-italia'); ?></a>
     </div>
 </section>
-

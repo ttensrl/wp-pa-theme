@@ -56,3 +56,8 @@ add_filter( 'dci_area_personale', function ( array $area ): array {
  */
 add_filter( 'theme_mod_site_contact_city', fn( $v ) => $v ?: 'Montesole' );
 add_filter( 'theme_mod_site_contact_address', fn( $v ) => $v ?: 'Piazza del Municipio 1' );
+
+/**
+ * Disabilita la fascia "Scopri come fare per" in Home per il profilo Comune.
+ */
+add_filter( 'dci_show_quick_access', '__return_false' );

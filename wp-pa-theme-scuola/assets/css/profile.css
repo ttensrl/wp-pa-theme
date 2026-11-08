@@ -20,6 +20,10 @@
 	--bs-link-hover-color-rgb: 0, 73, 133;
 }
 
+.it-header-navbar-wrapper {
+	background: #fff !important;
+}
+
 .btn-primary,
 .btn.btn-primary:disabled {
 	background-color: var(--scuola-blue);
@@ -257,7 +261,7 @@
 	list-style: none;
 }
 
-.dci-scuola-navbar .navbar-collapsable .navbar-nav li a.nav-link {
+.it-header-navbar-wrapper .dci-scuola-navbar .navbar-collapsable .navbar-nav li a.nav-link {
 	display: flex;
 	align-items: center;
 	gap: .35rem;
@@ -271,16 +275,17 @@
 	border-bottom: 3px solid transparent;
 }
 
-.dci-scuola-navbar .navbar-collapsable .navbar-nav li a.nav-link:hover,
-.dci-scuola-navbar .navbar-collapsable .navbar-nav li a.nav-link:focus {
+.it-header-navbar-wrapper .dci-scuola-navbar .navbar-collapsable .navbar-nav li a.nav-link:hover,
+.it-header-navbar-wrapper .dci-scuola-navbar .navbar-collapsable .navbar-nav li a.nav-link:focus {
 	color: var(--scuola-blue-hover);
 	border-bottom-color: var(--scuola-blue);
 }
 
-.dci-scuola-navbar .navbar-collapsable .navbar-nav li a.nav-link.active,
-.dci-scuola-navbar .navbar-collapsable .navbar-nav li.current-menu-item > a.nav-link,
-.dci-scuola-navbar .navbar-collapsable .navbar-nav li.current-menu-ancestor > a.nav-link {
+.it-header-navbar-wrapper .dci-scuola-navbar .navbar-collapsable .navbar-nav li a.nav-link.active,
+.it-header-navbar-wrapper .dci-scuola-navbar .navbar-collapsable .navbar-nav li.current-menu-item > a.nav-link,
+.it-header-navbar-wrapper .dci-scuola-navbar .navbar-collapsable .navbar-nav li.current-menu-ancestor > a.nav-link {
 	border-bottom-color: var(--scuola-blue);
+	color: var(--scuola-blue);
 }
 
 .dci-scuola-navbar .navbar-collapsable .navbar-nav li a.nav-link .icon {

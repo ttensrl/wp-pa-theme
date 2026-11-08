@@ -13,7 +13,9 @@ $org_url = dci_get_template_page_url( 'page-templates/page-organigramma.php' );
 ?>
 <main id="primary">
 
-	<?php get_template_part( 'template-parts/home/quick-access', null, array( 'org_url' => $org_url ) ); ?>
+	<?php if ( apply_filters( 'dci_show_quick_access', true ) ) : ?>
+		<?php get_template_part( 'template-parts/home/quick-access', null, array( 'org_url' => $org_url ) ); ?>
+	<?php endif; ?>
 	<?php get_template_part( 'template-parts/home/hero-slider' ); ?>
 
 	<section class="dci-section pb-0" aria-label="<?php esc_attr_e( 'Ricerca', 'wp-digital-italia' ); ?>">

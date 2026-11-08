@@ -21,6 +21,10 @@
 	--bs-link-hover-color-rgb: 0, 90, 128;
 }
 
+.it-header-navbar-wrapper {
+	background: var(--comune-navy) !important;
+}
+
 a {
 	color: var(--comune-accent);
 }
@@ -235,7 +239,7 @@ a:hover {
 	list-style: none;
 }
 
-.dci-comune-navbar .navbar-collapsable .navbar-nav li a.nav-link {
+.it-header-navbar-wrapper .dci-comune-navbar .navbar-collapsable .navbar-nav li a.nav-link {
 	display: flex;
 	align-items: center;
 	gap: .35rem;
@@ -248,16 +252,18 @@ a:hover {
 	text-decoration: none;
 }
 
-.dci-comune-navbar .navbar-collapsable .navbar-nav li a.nav-link:hover,
-.dci-comune-navbar .navbar-collapsable .navbar-nav li a.nav-link:focus {
+.it-header-navbar-wrapper .dci-comune-navbar .navbar-collapsable .navbar-nav li a.nav-link:hover,
+.it-header-navbar-wrapper .dci-comune-navbar .navbar-collapsable .navbar-nav li a.nav-link:focus {
 	text-decoration: underline;
 	text-underline-offset: 4px;
+	color: #fff;
 }
 
-.dci-comune-navbar .navbar-collapsable .navbar-nav li a.nav-link.active,
-.dci-comune-navbar .navbar-collapsable .navbar-nav li.current-menu-item > a.nav-link,
-.dci-comune-navbar .navbar-collapsable .navbar-nav li.current-menu-ancestor > a.nav-link {
+.it-header-navbar-wrapper .dci-comune-navbar .navbar-collapsable .navbar-nav li a.nav-link.active,
+.it-header-navbar-wrapper .dci-comune-navbar .navbar-collapsable .navbar-nav li.current-menu-item > a.nav-link,
+.it-header-navbar-wrapper .dci-comune-navbar .navbar-collapsable .navbar-nav li.current-menu-ancestor > a.nav-link {
 	border-bottom-color: #fff;
+	color: #fff;
 }
 
 .dci-comune-navbar .navbar-collapsable .navbar-nav li a.nav-link .icon {

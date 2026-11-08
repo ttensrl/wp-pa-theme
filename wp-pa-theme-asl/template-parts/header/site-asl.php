@@ -25,11 +25,11 @@ $area = dci_area_personale();
 
 				<div class="dci-asl-tools">
 					<?php if ( ! empty( $area['url'] ) ) : ?>
-						<a class="dci-asl-areapersonale" href="<?php echo esc_url( $area['url'] ); ?>">
+						<a class="dci-asl-areapersonale" href="<?php echo esc_url( $area['url'] ); ?>" title="<?php esc_attr_e( 'Accedi con SPID o CIE', 'wp-digital-italia' ); ?>">
 							<span class="dci-asl-areapersonale__label"><?php echo esc_html( $area['label'] ); ?></span>
-							<span class="dci-asl-areapersonale__ids" aria-hidden="true">
-								<span class="dci-asl-id">SPID</span>
-								<span class="dci-asl-id">CIE</span>
+							<span class="dci-asl-areapersonale__ids">
+								<img class="dci-asl-id dci-asl-id--spid" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/identity/spid-bianco.svg' ); ?>" alt="SPID" height="26">
+								<img class="dci-asl-id dci-asl-id--cie" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/identity/cie-bianco.svg' ); ?>" alt="CIE" height="30">
 							</span>
 						</a>
 					<?php endif; ?>

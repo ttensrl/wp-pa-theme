@@ -312,14 +312,14 @@ a:hover {
  * Footer
  * ------------------------------------------------------------------ */
 .dci-comune-footer {
-	margin-top: 3rem;
+	margin-top: 0;
 }
 
 .dci-comune-footer .it-footer-main {
 	background: var(--comune-navy);
 	color: #fff;
 	font-size: .95rem;
-	padding-block: 2.5rem;
+	padding-block: 1.75rem;
 }
 
 .dci-comune-footer .it-footer-main h4 {
@@ -572,3 +572,21 @@ a:hover {
 		justify-content: flex-start;
 	}
 }
+
+/* Titoli e link principali: blu notte come il sito di riferimento */
+:root { --dci-heading: #0d3b66; }
+
+/* ------------------------------------------------------------------ *
+ * Identità Comune: istituzionale e sobria. Blu notte, card squadrate, testi con grazie,
+ * fondo neutro, titoli in frase.
+ * ------------------------------------------------------------------ */
+.dci-herosplit__text, .dci-newscard__text { font-family: Georgia, "Times New Roman", serif !important; }
+.dci-herosplit__title { font-weight: 600; letter-spacing: -.01em; }
+.dci-block__head { border-bottom: 1px solid #d3d9e0; }
+.dci-block__title { font-weight: 600; }
+.dci-block--grey { background: #eef0f3; }
+.dci-newscard { border-radius: 0; border-top: 0; box-shadow: 0 1px 8px rgba(13, 59, 102, .14); }
+.dci-newscard__media { aspect-ratio: 3 / 2; }
+.dci-icontiles__ico { background: #e3eaf2; border-radius: 0; }
+.dci-btn { background: #0d3b66; border-radius: 0; text-transform: uppercase; letter-spacing: .03em; font-size: .8125rem; }
+.dci-more { font-weight: 500; }

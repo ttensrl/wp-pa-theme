@@ -5,19 +5,19 @@
  */
 
 :root {
-	--scuola-blue: hsl(210, 100%, 32%);
-	--scuola-blue-rgb: 0, 90, 163;
-	--scuola-preheader: hsl(210, 100%, 15%);
-	--scuola-blue-hover: hsl(210, 100%, 26%);
+	--scuola-blue: #0a5fd0;
+	--scuola-blue-rgb: 10, 95, 208;
+	--scuola-preheader: #0a2a63;
+	--scuola-blue-hover: #084aa6;
 	--scuola-footer: hsl(210, 12%, 21%);
 	--scuola-footer-link: #65d5d4;
 
-	--bs-primary: hsl(210, 100%, 32%);
-	--bs-primary-rgb: 0, 90, 163;
-	--bs-link-color: hsl(210, 100%, 32%);
-	--bs-link-hover-color: hsl(210, 100%, 26%);
-	--bs-link-color-rgb: 0, 90, 163;
-	--bs-link-hover-color-rgb: 0, 73, 133;
+	--bs-primary: #0a5fd0;
+	--bs-primary-rgb: 10, 95, 208;
+	--bs-link-color: #0a5fd0;
+	--bs-link-hover-color: #084aa6;
+	--bs-link-color-rgb: 10, 95, 208;
+	--bs-link-hover-color-rgb: 8, 74, 166;
 }
 
 .it-header-navbar-wrapper {
@@ -578,3 +578,57 @@
 		margin-top: .5rem;
 	}
 }
+
+/* ------------------------------------------------------------------ *
+ * Allineamento al riferimento: testata blu con marchio e ricerca bianchi,
+ * navigazione chiara non maiuscola, margini ridotti.
+ * ------------------------------------------------------------------ */
+.dci-scuola-header .it-header-center-wrapper {
+	background: var(--scuola-blue);
+	border-bottom: 0;
+	min-height: 0;
+}
+
+.dci-scuola-header .it-header-center-content-wrapper { padding-block: .75rem; }
+
+.dci-scuola-brand .it-brand-title,
+.dci-scuola-brand .it-brand-subtitle,
+.dci-scuola-brand .it-brand-tagline { color: #fff; }
+.dci-scuola-brand .it-brand-title { font-weight: 500; }
+
+.dci-scuola-search .dci-search-form__inner { border-bottom-color: #fff; }
+.dci-scuola-search input[type="search"] { color: #fff; }
+.dci-scuola-search input[type="search"]::placeholder { color: #fff; opacity: .9; }
+.dci-scuola-search .dci-search-form__btn { background: #fff; border-radius: 50%; width: 40px; height: 40px; margin-left: .75rem; }
+.dci-scuola-search .dci-search-form__inner { border-bottom-width: 1px; }
+
+.it-header-navbar-wrapper .dci-scuola-navbar .navbar-collapsable .navbar-nav li a.nav-link {
+	text-transform: none;
+	font-size: .9rem;
+	font-weight: 700;
+}
+
+.dci-scuola-footer { margin-top: 0; }
+
+/* ------------------------------------------------------------------ *
+ * Identità Scuola: blu cobalto con un solo accento giallo, forme composte
+ * ------------------------------------------------------------------ */
+:root { --dci-accent: #f2b705; --dci-heading: #0a5fd0; }
+.dci-scuola-header { border-bottom: 3px solid var(--dci-accent); }
+
+.dci-block__head { border-bottom: 1px solid #cfd8e6; margin-bottom: 1.1rem; }
+.dci-block__title { padding-bottom: .5rem; }
+.dci-block--grey { background: #edf3fc; }
+
+.dci-newscard { border-radius: 6px; overflow: hidden; border-top: 0; box-shadow: 0 2px 10px rgba(10, 42, 99, .12); }
+.dci-newscard__media { aspect-ratio: 16 / 10; }
+
+.dci-icontiles__ico { width: 5rem; height: 4.25rem; border-radius: 6px; background: #e2ecfb; }
+.dci-icontiles a { text-decoration: none; }
+.dci-icontiles a:hover span:last-child, .dci-icontiles a:focus-visible { text-decoration: underline; }
+
+.dci-logotiles span { border-radius: 6px; border-width: 2px; }
+.dci-colortiles a { border-radius: 6px; overflow: hidden; }
+.dci-notices li { border-radius: 0; }
+.dci-proc { border-radius: 6px; }
+.dci-btn { border-radius: 4px; }

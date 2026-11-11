@@ -2,11 +2,8 @@
 // Leggi i parametri GET direttamente dall'URL (se presenti)
 $preselected_service_id = isset($_GET['servizio_id']) && !empty($_GET['servizio_id']) ? intval($_GET['servizio_id']) : null;
 
-// Avvia la sessione solo per dati utente SPID/CIE (se necessario)
-if (!session_id()) {
-    session_start();
-}
-$user_data = $_SESSION['govauth_user_data'] ?? array();
+// Dati utente SPID/CIE: dal plugin Auth SPID CIE (nessuna sessione PHP).
+$user_data = function_exists('authspidcie_get_attributes') ? authspidcie_get_attributes() : array();
 
 // Genera i prossimi 12 mesi partendo dal mese corrente
 $months = array();

@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 add_action( 'wp_enqueue_scripts', function () {
-	wp_enqueue_style( 'hub-style', get_stylesheet_directory_uri() . '/assets/css/hub.css', array( 'theme-dist-style' ), wp_get_theme()->get( 'Version' ) );
+	wp_enqueue_style( 'hub-style', get_stylesheet_directory_uri() . '/assets/css/hub.css', array( 'theme-dist-style' ), filemtime( get_stylesheet_directory() . '/assets/css/hub.css' ) ?: wp_get_theme()->get( 'Version' ) );
 }, 20 );
 
 /** Demo disponibili: slug del sito nella rete => dati di presentazione. */

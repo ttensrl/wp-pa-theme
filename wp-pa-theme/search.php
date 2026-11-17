@@ -12,7 +12,7 @@ get_header();
     <?php if ( have_posts() ) : ?>
 	<main id="primary" class="container-fluid py-2 py-md-5">
         <div class="row">
-            <div class="col-lg-9 order-lg-2">
+            <div class="col-lg-9 order-lg-2 dci-card-list">
                 <section class="px-3">
                     <header class="page-header mb-4">
                         <h1 class="page-title">

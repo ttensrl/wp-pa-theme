@@ -53,6 +53,13 @@ body.layout-boxed .container-fluid { max-width: 1200px; margin-inline: auto; }
 body.layout-boxed .it-header-wrapper .container-fluid,
 body.layout-boxed footer .container-fluid { padding-inline: 1.5rem; }
 
+/* Elenco verticale di card (archivi, notizie, risultati di ricerca).
+   Bootstrap Italia imposta height:100% su .card-wrapper e .card quando sono figli di una colonna:
+   con più card impilate nella stessa colonna le stira all'altezza della colonna e il contenuto
+   esce dal layout finendo sopra il footer. Qui l'elenco è verticale, quindi l'altezza torna automatica. */
+.row .dci-card-list > .card-wrapper,
+.row .dci-card-list > .card-wrapper > .card { height: auto; }
+
 /* Hero slider news */
 .dci-hero-slider { position: relative; background: #17325c; color: #fff; }
 .dci-hero-slide { position: relative; display: flex; align-items: flex-end; justify-content: center; min-height: clamp(320px, 42vw, 520px); }

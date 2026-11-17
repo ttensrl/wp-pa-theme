@@ -15,7 +15,9 @@ get_header();
         <div class="container-fluid">
             <?php
             if ( is_home() && ! is_front_page() ) :
-                single_post_title( '<h1 class="mb-2">', '</h1>' );
+                ?>
+                <h1 class="mb-2"><?php single_post_title(); ?></h1>
+                <?php
             else :
                 the_archive_title( '<h1 class="mb-2">', '</h1>' );
             endif;
@@ -25,7 +27,7 @@ get_header();
     </header>
 
     <div class="row g-4">
-        <div class="col-lg-9 order-lg-2">
+        <div class="col-lg-9 order-lg-2 dci-card-list">
             <section class="px-3">
                 <?php if ( have_posts() ) : ?>
 

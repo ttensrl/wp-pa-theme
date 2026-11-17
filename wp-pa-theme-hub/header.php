@@ -16,9 +16,10 @@
 		<a class="hub-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><span class="hub-brand__mark" aria-hidden="true">+</span> Digital Italia <span class="hub-brand__sub">per la PA</span></a>
 		<nav aria-label="<?php esc_attr_e( 'Demo', 'wp-pa-theme-hub' ); ?>">
 			<ul class="hub-nav">
-				<li><a href="#demo">Demo</a></li>
-				<li><a href="#funzioni">Funzioni</a></li>
-				<li><a href="#architettura">Architettura</a></li>
+				<li><a href="<?php echo esc_url( home_url( '/#demo' ) ); ?>">Demo</a></li>
+				<li><a href="<?php echo esc_url( home_url( '/#funzioni' ) ); ?>">Funzioni</a></li>
+				<li><a href="<?php echo esc_url( home_url( '/#architettura' ) ); ?>">Architettura</a></li>
+				<li><a href="<?php echo esc_url( home_url( '/spid-cie/' ) ); ?>"<?php echo is_page( 'spid-cie' ) ? ' aria-current="page"' : ''; ?>>Plugin SPID/CIE</a></li>
 			</ul>
 		</nav>
 	</div>

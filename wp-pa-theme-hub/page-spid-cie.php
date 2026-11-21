@@ -99,7 +99,7 @@ $badges = array( 'PHP 8.0+', 'GPL-3.0', 'Nessuna dipendenza', 'SAML 2.0' );
 		<div class="hub-container">
 			<p class="hub-eyebrow">Auth SPID CIE &middot; v0.1.0 in sviluppo</p>
 			<h1>Accesso con SPID e CIE per WordPress.</h1>
-			<p class="hub-lead">Un plugin autonomo che porta SPID e CIE sul sito istituzionale di Comuni, ASL e scuole. Il cittadino si identifica con la sua identità digitale; il sito riceve solo i dati che servono, senza gestire account.</p>
+			<p class="hub-lead">Un plugin autonomo che porta SPID e CIE sul sito istituzionale di Comuni, ASL, scuole e musei. Il cittadino si identifica con la sua identità digitale; il sito riceve solo i dati che servono, senza gestire account.</p>
 			<div class="hub-cta">
 				<a class="hub-btn hub-btn--solid" href="<?php echo esc_url( $demo ); ?>">Prova la demo</a>
 				<a class="hub-btn hub-btn--ghost" href="<?php echo esc_url( $github ); ?>">Codice su GitHub</a>

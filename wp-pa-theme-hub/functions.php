@@ -34,6 +34,13 @@ function hub_demos(): array {
 			'text'  => 'Il sito dell\'istituto: plessi, segreteria, circolari e avvisi per famiglie e studenti.',
 			'items' => array( 'Plessi e uffici di segreteria', 'Iscrizioni, mensa, registro elettronico', 'Avvisi, PON e gare' ),
 		),
+		'musei'  => array(
+			'title' => 'Musei',
+			'tag'   => 'Cultura',
+			'color' => '#5a768a',
+			'text'  => 'Il sito dei musei civici: sedi e orari, mostre ed eventi, opere in collezione e notizie dal museo.',
+			'items' => array( 'Sedi, orari e dove siamo', 'Mostre ed eventi in evidenza', 'Opere, notizie e newsletter' ),
+		),
 	);
 }
 

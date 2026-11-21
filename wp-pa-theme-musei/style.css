@@ -1,0 +1,13 @@
+/*!
+Theme Name: WP Digital Italia - Musei
+Theme URI: https://github.com/ttensrl/wp-pa-theme
+Author: TTEN
+Description: Child theme di WP Digital Italia con il profilo grafico e i contenuti per i Musei civici (modello AGID "Musei civici - Modello sito").
+Template: wp-pa-theme
+Version: 0.1.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: wp-digital-italia-musei
+*/
+
+/* Gli stili del profilo Musei stanno in assets/css/musei.css (caricato da functions.php). */

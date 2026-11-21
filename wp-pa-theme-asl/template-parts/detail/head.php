@@ -2,7 +2,7 @@
 /**
  * Testata delle pagine di dettaglio: breadcrumb, titolo, sottotitolo, "Condividi", etichette.
  *
- * @param array $args { crumbs: [ [label, url], ... ], title, lead, badge, badge_text }
+ * @param array $args { crumbs: [ [label, url], ... ], title, lead, badge, badge_text, meta (HTML) }
  * @package digital-italia
  */
 $crumbs = $args['crumbs'] ?? array();
@@ -11,6 +11,7 @@ $lead   = $args['lead'] ?? '';
 $badge  = $args['badge'] ?? '';
 $note   = $args['badge_text'] ?? '';
 $bare   = ! empty( $args['no_rule'] );
+$meta   = $args['meta'] ?? '';
 ?>
 <div class="asl-detail-head<?php echo $bare ? ' is-bare' : ''; ?>">
 	<div class="container">
@@ -31,6 +32,7 @@ $bare   = ! empty( $args['no_rule'] );
 			</button>
 		</div>
 		<?php if ( $lead ) : ?><p class="asl-detail-head__lead"><?php echo esc_html( $lead ); ?></p><?php endif; ?>
+		<?php if ( $meta ) : ?><p class="asl-detail-head__meta"><?php echo wp_kses_post( $meta ); ?></p><?php endif; ?>
 		<?php if ( $badge ) : ?>
 			<p class="asl-detail-head__status"><span class="asl-badge"><?php echo esc_html( $badge ); ?></span><?php echo $note ? ' ' . esc_html( $note ) : ''; ?></p>
 		<?php endif; ?>

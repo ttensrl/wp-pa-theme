@@ -151,3 +151,53 @@ function asl_servizio_strutture( int $servizio_id ): array {
 	}
 	return $out;
 }
+
+/* ------------------------------------------------------------------ *
+ *  "Tutto per": tag trasversali a tutti i tipi di contenuto
+ * ------------------------------------------------------------------ */
+
+/** Tipi di contenuto che possono avere i tag (oltre agli articoli). */
+function asl_tag_post_types(): array {
+	return apply_filters( 'asl_tag_post_types', array( 'post', 'page', 'servizio', 'dipartimento', 'bando', 'persona' ) );
+}
+
+add_action( 'init', function () {
+	foreach ( asl_tag_post_types() as $pt ) {
+		if ( post_type_exists( $pt ) ) {
+			register_taxonomy_for_object_type( 'post_tag', $pt );
+		}
+	}
+}, 20 );
+
+/** L'archivio di un tag elenca tutti i tipi di contenuto che lo usano. */
+add_action( 'pre_get_posts', function ( WP_Query $q ) {
+	if ( ! is_admin() && $q->is_main_query() && $q->is_tag() ) {
+		$q->set( 'post_type', array_values( array_filter( asl_tag_post_types(), 'post_type_exists' ) ) );
+	}
+} );
+
+/** Destinatari della sezione "Tutto per": ognuno corrisponde a un tag. */
+function asl_targets(): array {
+	return apply_filters( 'asl_targets', array(
+		'Donne', 'Bambini', 'Prestatori di cura (caregiver)', 'Anziani',
+		'Persone con disabilità', 'Animali', 'Imprese', 'Cittadini stranieri',
+	) );
+}
+
+function asl_target_url( string $name ): string {
+	$term = get_term_by( 'name', $name, 'post_tag' );
+	if ( $term && ! is_wp_error( $term ) ) {
+		return (string) get_term_link( $term );
+	}
+	return add_query_arg( 'tag', sanitize_title( $name ), home_url( '/' ) );
+}
+
+/** Crea i tag dei destinatari se mancano (all'attivazione del tema). */
+function asl_ensure_target_tags(): void {
+	foreach ( asl_targets() as $name ) {
+		if ( ! term_exists( $name, 'post_tag' ) ) {
+			wp_insert_term( $name, 'post_tag' );
+		}
+	}
+}
+add_action( 'after_switch_theme', 'asl_ensure_target_tags' );

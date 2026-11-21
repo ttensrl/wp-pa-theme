@@ -1150,3 +1150,45 @@ a:focus {
 .asl-index-widgets ul { list-style: none; margin: 0; padding: 0; }
 .asl-index-widgets li a { display: block; padding: 12px 24px; font-size: 1.125rem; font-weight: 600; color: var(--asl-header); text-decoration: none; }
 .asl-index-widgets li a:hover { text-decoration: underline; }
+
+/* ================================================================== *
+ * Notizie (lista ASL Comunica e dettaglio) - prototipo AGID
+ * ================================================================== */
+.blog .breadcrumb-wrapper, .category .breadcrumb-wrapper, .tag .breadcrumb-wrapper,
+.date .breadcrumb-wrapper, .author .breadcrumb-wrapper, .single-post .breadcrumb-wrapper { display: none; }
+
+.asl-news-grid .asl-news { box-shadow: 0 4px 12px rgba(0,0,0,.15); }
+.asl-news__media { display: block; }
+.asl-news__media.is-placeholder { position: relative; }
+.asl-news__body h3 { margin-bottom: 0; }
+.asl-tag { text-transform: uppercase; }
+
+.asl-chips-section { padding: 40px 0; }
+.asl-chips-title { font-size: 1.125rem; line-height: 1.5rem; font-weight: 600; color: var(--asl-text-2); margin: 0 0 24px; text-transform: uppercase; }
+.asl-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 16px; margin: 0; padding: 0; }
+.asl-chips a { display: inline-block; border: 1px solid var(--asl-link); border-radius: 100px; padding: 2px 24px; font-size: .875rem; line-height: 1.25rem; font-weight: 700; color: var(--asl-link); text-decoration: none; }
+.asl-chips a:hover { background: var(--asl-link); color: #fff; }
+.asl-chips--article { margin: 32px 0 0; }
+
+.asl-pagination { margin-top: 40px; }
+.asl-pagination .nav-links { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; }
+.asl-pagination .page-numbers { display: inline-block; min-width: 40px; padding: 8px 12px; text-align: center; border: 1px solid var(--asl-border); border-radius: 4px; color: var(--asl-header); font-weight: 600; text-decoration: none; background: #fff; }
+.asl-pagination .page-numbers.current { background: var(--asl-header); border-color: var(--asl-header); color: #fff; }
+.asl-pagination a.page-numbers:hover { border-color: var(--asl-header); }
+
+.asl-detail-head__meta { margin: 0 0 12px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; }
+.asl-detail-head__meta time { font-family: var(--asl-font-mono); font-size: .875rem; color: var(--asl-text-3); }
+.asl-detail-head__upd { font-size: .875rem; color: var(--asl-text-3); }
+
+.asl-article > *:first-child { margin-top: 0; }
+.asl-article h2 { font-family: var(--asl-font-family); font-size: 2.25rem; line-height: 2.75rem; font-weight: 700; color: var(--asl-ink); margin: 56px 0 16px; scroll-margin-top: 24px; }
+.asl-article h2:first-child { margin-top: 0; }
+.asl-article h3 { font-family: var(--asl-font-family); font-size: 1.5rem; line-height: 2rem; font-weight: 600; color: var(--asl-ink); margin: 32px 0 12px; }
+.asl-article img { max-width: 100%; height: auto; }
+.asl-article ul, .asl-article ol { padding-left: 1.5rem; margin: 0 0 16px; }
+.asl-article a { color: var(--asl-header); }
+.asl-article blockquote { margin: 24px 0; padding: 8px 0 8px 24px; border-left: 4px solid var(--asl-border); }
+.asl-detail-section--more { margin-top: 64px; }
+
+/* I link nelle liste non devono ereditare il colore generico */
+.asl-list .asl-featured__title a, .asl-list .asl-news__body h3 a { color: var(--asl-header); }

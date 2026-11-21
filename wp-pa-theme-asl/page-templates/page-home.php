@@ -27,11 +27,8 @@ $quick = apply_filters( 'asl_quick_searches', array(
 	'Asma',
 ) );
 
-/* Destinatari ("Tutto per"). */
-$targets = apply_filters( 'asl_targets', array(
-	'Donne', 'Bambini', 'Prestatori di cura (caregiver)', 'Anziani',
-	'Persone con disabilità', 'Animali', 'Imprese', 'Cittadini stranieri',
-) );
+/* Destinatari ("Tutto per"): ognuno e' un tag che elenca tutti i contenuti collegati. */
+$targets = asl_targets();
 
 $user_icon = '<svg class="asl-card-icon" viewBox="0 0 24 24" width="32" height="32" aria-hidden="true"><circle cx="12" cy="8" r="4.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M3.5 22c.6-4.6 4.2-7.5 8.5-7.5s7.9 2.9 8.5 7.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>';
 $book_icon = '<svg class="asl-card-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M2.5 4.5h7a2.5 2.5 0 0 1 2.5 2.5v13a2 2 0 0 0-2-2h-7.5zM21.5 4.5h-7A2.5 2.5 0 0 0 12 7v13a2 2 0 0 1 2-2h7.5z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>';
@@ -158,7 +155,7 @@ $book_icon = '<svg class="asl-card-icon" viewBox="0 0 24 24" width="20" height="
 			<div class="row g-4">
 				<?php foreach ( $targets as $t ) : ?>
 					<div class="col-6 col-lg-3">
-						<a class="asl-card asl-card--target" href="<?php echo esc_url( add_query_arg( 's', rawurlencode( $t ), home_url( '/' ) ) ); ?>">
+						<a class="asl-card asl-card--target" href="<?php echo esc_url( asl_target_url( $t ) ); ?>">
 							<span><?php echo esc_html( $t ); ?></span><?php echo $user_icon; // phpcs:ignore ?>
 						</a>
 					</div>

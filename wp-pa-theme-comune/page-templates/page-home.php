@@ -65,13 +65,11 @@ $tiles   = dci_quick_links();
 				</ul>
 			</div>
 			<div>
-				<div class="dci-block__head"><h2 class="dci-block__title"><?php esc_html_e( 'Bandi e avvisi', 'wp-digital-italia' ); ?></h2><a class="dci-more" href="<?php echo esc_url( get_post_type_archive_link( 'bando' ) ); ?>"><?php esc_html_e( 'Leggi tutto', 'wp-digital-italia' ); ?></a></div>
+				<div class="dci-block__head"><h2 class="dci-block__title"><?php esc_html_e( 'Bandi e avvisi', 'wp-digital-italia' ); ?></h2><a class="dci-more" href="<?php echo esc_url( dci_bandi_url() ); ?>"><?php esc_html_e( 'Leggi tutto', 'wp-digital-italia' ); ?></a></div>
 				<ul class="dci-proc">
-					<?php while ( $bandi->have_posts() ) : $bandi->the_post();
-						$pub = get_post_meta( get_the_ID(), '_dci_bando_data_publish', true );
-						$sca = get_post_meta( get_the_ID(), '_dci_bando_data_scadenza', true ); ?>
+					<?php while ( $bandi->have_posts() ) : $bandi->the_post();?>
 						<li>
-							<span class="dci-proc__dates"><span><?php esc_html_e( 'Pubblicato il', 'wp-digital-italia' ); ?> <?php echo $pub ? esc_html( date_i18n( 'j M Y', strtotime( $pub ) ) ) : ''; ?></span><?php if ( $sca ) : ?><span><?php esc_html_e( 'Scadenza', 'wp-digital-italia' ); ?> <?php echo esc_html( date_i18n( 'j M Y', strtotime( $sca ) ) ); ?></span><?php endif; ?></span>
+							<span class="dci-proc__dates"><span><?php esc_html_e( 'Pubblicato il', 'wp-digital-italia' ); ?> <?php echo esc_html( get_the_date( 'j M Y' ) ); ?></span></span>
 							<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 						</li>
 					<?php endwhile; wp_reset_postdata(); ?>

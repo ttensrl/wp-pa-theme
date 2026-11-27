@@ -20,7 +20,7 @@ $features = array(
 		<div class="hub-container">
 			<p class="hub-eyebrow">WP Digital Italia</p>
 			<h1>Un unico tema,<br>tanti enti pubblici.</h1>
-			<p class="hub-lead">Comuni, ASL e scuole sullo stesso tema WordPress: un parent accessibile basato su Bootstrap Italia e un child theme per ogni ente. Scegli una demo e naviga come un cittadino.</p>
+			<p class="hub-lead">Comuni, ASL, scuole e musei sullo stesso tema WordPress: un parent accessibile basato su Bootstrap Italia e un child theme per ogni ente. Scegli una demo e naviga come un cittadino.</p>
 			<div class="hub-cta">
 				<a class="hub-btn hub-btn--solid" href="#demo">Esplora le demo</a>
 				<a class="hub-btn hub-btn--ghost" href="#architettura">Come funziona</a>
@@ -32,7 +32,7 @@ $features = array(
 	<section id="demo" class="hub-section">
 		<div class="hub-container">
 			<h2 class="hub-title">Scegli una demo</h2>
-			<p class="hub-sub">Tre siti reali nella stessa installazione, ognuno con il proprio tema, i propri contenuti e il proprio profilo grafico.</p>
+			<p class="hub-sub">Quattro siti reali nella stessa installazione, ognuno con il proprio tema, i propri contenuti e il proprio profilo grafico.</p>
 			<div class="hub-cards">
 				<?php foreach ( $demos as $slug => $d ) :
 					$url = hub_demo_url( $slug );
@@ -68,16 +68,17 @@ $features = array(
 		<div class="hub-container">
 			<h2 class="hub-title">Come è fatto</h2>
 			<p class="hub-sub">Un parent con tutto il lavoro pesante, un child sottilissimo per ogni ente, una rete multisite per la demo.</p>
-			<div class="hub-arch" role="img" aria-label="Il tema parent WP Digital Italia è esteso dai child Comuni, ASL e Scuole, ognuno su un sito della rete multisite">
+			<div class="hub-arch" role="img" aria-label="Il tema parent WP Digital Italia è esteso dai child Comuni, ASL, Scuole e Musei, ognuno su un sito della rete multisite">
 				<div class="hub-arch__parent">wp-pa-theme<small>parent &middot; Bootstrap Italia &middot; layout, CPT, accessibilità</small></div>
 				<div class="hub-arch__lines" aria-hidden="true"></div>
 				<div class="hub-arch__children">
 					<div style="--c:#00796b">wp-pa-theme-comune<small>/comuni/</small></div>
 					<div style="--c:#0066cc">wp-pa-theme-asl<small>/asl/</small></div>
 					<div style="--c:#6a3fa0">wp-pa-theme-scuola<small>/scuole/</small></div>
+					<div style="--c:#5a768a">wp-pa-theme-musei<small>/musei/</small></div>
 				</div>
 			</div>
-			<p class="hub-sub hub-sub--small">I siti stanno su percorsi virtuali (<code>/comuni/</code>, <code>/asl/</code>, <code>/scuole/</code>) della stessa installazione WordPress multisite; gli asset compilati sono già nel repository.</p>
+			<p class="hub-sub hub-sub--small">I siti stanno su percorsi virtuali (<code>/comuni/</code>, <code>/asl/</code>, <code>/scuole/</code>, <code>/musei/</code>) della stessa installazione WordPress multisite; gli asset compilati sono già nel repository.</p>
 		</div>
 	</section>
 </main>

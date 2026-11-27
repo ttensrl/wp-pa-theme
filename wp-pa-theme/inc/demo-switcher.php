@@ -13,7 +13,7 @@ add_action( 'wp_body_open', function () {
 		return;
 	}
 	$current = get_current_blog_id();
-	$labels  = array( 'comuni' => 'Comuni', 'asl' => 'ASL', 'scuole' => 'Scuole' );
+	$labels  = array( 'comuni' => 'Comuni', 'asl' => 'ASL', 'scuole' => 'Scuole', 'musei' => 'Musei' );
 	echo '<nav class="dci-demo-bar" aria-label="' . esc_attr__( 'Cambia demo', 'wp-digital-italia' ) . '"><div class="dci-demo-bar__in"><a class="dci-demo-bar__hub" href="' . esc_url( network_home_url( '/' ) ) . '">&larr; ' . esc_html__( 'Tutte le demo', 'wp-digital-italia' ) . '</a><ul>';
 	foreach ( get_sites( array( 'public' => 1, 'orderby' => 'path', 'number' => 20 ) ) as $site ) {
 		if ( (int) $site->blog_id === (int) get_main_site_id() ) {

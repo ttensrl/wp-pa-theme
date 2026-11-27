@@ -49,10 +49,10 @@ Altre sezioni del Customizer: **Site Contact** (email, telefono, indirizzo, P.IV
 
 ## Layout
 
-- **Home** (`page-templates/page-home.php`, parti in `template-parts/home/`): fascia "Scopri come fare per", hero slider delle news, ricerca, tab Informa (notizie / bandi), strutture, guida ai servizi. Senza sidebar.
+- **Home** (`page-templates/page-home.php`, parti in `template-parts/home/`): fascia "Scopri come fare per", hero slider delle news, ricerca, tab Informa (notizie / bandi dal plugin), strutture, guida ai servizi. Senza sidebar.
 - **Pagine interne**: sidebar **sempre a sinistra** (`sidebar.php`) con box colorati derivati dal colore primario: navigazione di sezione (contestuale), contatti, "Scopri come fare per", accordion *Guida ai servizi* e *Strutture*, area widget `sidebar-1`. Nel DOM il contenuto precede la sidebar (ordine di tabulazione corretto) e viene riordinato con `order-lg-*`.
 - **Organigramma** (`page-templates/page-organigramma.php`): accordion per struttura di primo livello con persone, ruoli e unità collegate.
-- **Strutture** (`archive-dipartimento.php`), **Bandi** (`archive-bando.php`, filtro per anno, stato *In corso*/*Scaduto*), **Persone** (`archive-persona.php`).
+- **Strutture** (`archive-dipartimento.php`), **Bandi** (gestiti dal plugin `amministrazione-trasparente`, non dal tema), **Persone** (`archive-persona.php`).
 - **Altri template di pagina**: `page-full.php` (larghezza piena), `page-booking.php` (prenotazioni).
 
 Accessibilità: skip link, landmark etichettati, `aria-*` su tab/accordion/slider, slider con pausa, stop su hover/focus e rispetto di `prefers-reduced-motion`, focus visibile.
@@ -64,7 +64,6 @@ Accessibilità: skip link, landmark etichettati, `aria-*` su tab/accordion/slide
 | `dipartimento` (gerarchico) | `/dipartimento/` | contatti, mappa (lat/lng), responsabile, organigramma, servizi collegati |
 | `persona` | `/persona/` | nome, cognome, email, telefono, ruolo, storico incarichi |
 | `servizio` | single | descrizione, prenotazione opzionale |
-| `bando` | `/bandi/{anno}/{slug}/` | tipo, importo, CIG, CPV, date, allegati, termini, aggiudicatari |
 | `appuntamento` | admin | prenotazioni (dati richiedente, data, servizio) |
 
 I metabox usano CMB2 (inclusa in `wp-digital-italia-extension/`).

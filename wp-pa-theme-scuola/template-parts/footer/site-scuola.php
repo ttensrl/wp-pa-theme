@@ -1,105 +1,120 @@
 <?php
 /**
- * Footer del profilo Scuola, modellato su federicocaffe.edu.it:
- * fondo scuro con marchio, recapiti della scuola, menu di servizio
- * e fascia finale con link di trasparenza.
+ * Footer del profilo Scuola (modello Design Scuole): marchio, quattro colonne di link,
+ * link legali con "Seguici su", dati dell'istituto e credito a Designers Italia.
  *
  * @package digital-italia
  */
-$city    = dci_mod( 'site_contact_city' );
-$address = dci_mod( 'site_contact_address' );
+$parts   = dci_brand_parts();
+$logo    = scuola_logo_url();
+$address = dci_address_line( ' - ' );
 $phone   = dci_mod( 'site_contact_phone' );
 $email   = dci_contact_email();
 $pec     = dci_contact_pec();
-$vat     = dci_mod( 'site_contact_vat' );
-$urp     = dci_mod( 'site_contact_urp' );
+$mecc    = dci_mod( 'scuola_codice_meccanografico' );
+$ipa     = dci_mod( 'scuola_ipa' );
+$cf      = dci_mod( 'site_contact_vat' );
+$cuf     = dci_mod( 'scuola_cuf' );
+$news    = (int) get_option( 'page_for_posts' );
+$privacy = get_page_by_path( 'privacy' );
+$access  = get_page_by_path( 'accessibilita' );
 $trasp   = dci_mod( 'site_contact_administration_transparent' );
-$menus   = array( 'footer-one', 'footer-two', 'footer-three', 'footer-four' );
+$albo    = dci_bandi_url();
+$about   = scuola_page_url( 'chi-siamo' );
+$org     = scuola_page_url( 'organigramma' );
+
+$cols = apply_filters( 'scuola_footer_columns', array(
+	__( 'Collegamenti esterni', 'wp-digital-italia' ) => array(
+		array( __( 'Ministero dell\'Istruzione e del Merito', 'wp-digital-italia' ), 'https://www.mim.gov.it/' ),
+		array( __( 'Scuola in Chiaro', 'wp-digital-italia' ), 'https://cercalatuascuola.istruzione.it/' ),
+		array( __( 'Iscrizioni On Line', 'wp-digital-italia' ), 'https://www.istruzione.it/iscrizionionline/' ),
+		array( __( 'Pago in Rete', 'wp-digital-italia' ), 'https://www.istruzione.it/pagoinrete/' ),
+		array( __( 'Invalsi', 'wp-digital-italia' ), 'https://www.invalsi.it/' ),
+		array( __( 'Erasmus+', 'wp-digital-italia' ), 'https://erasmus-plus.ec.europa.eu/it' ),
+	),
+	__( 'Scuola', 'wp-digital-italia' ) => array(
+		array( __( 'Presentazione', 'wp-digital-italia' ), $about ),
+		array( __( 'Organizzazione', 'wp-digital-italia' ), $org ),
+		array( __( 'Le strutture', 'wp-digital-italia' ), get_post_type_archive_link( 'dipartimento' ) ),
+		array( __( 'Le persone', 'wp-digital-italia' ), get_post_type_archive_link( 'persona' ) ),
+	),
+	__( 'Servizi', 'wp-digital-italia' ) => array(
+		array( __( 'Servizi della scuola', 'wp-digital-italia' ), home_url( '/#servizi' ) ),
+		array( __( 'Famiglie e studenti', 'wp-digital-italia' ), home_url( '/#servizi' ) ),
+		array( __( 'Personale scolastico', 'wp-digital-italia' ), home_url( '/#servizi' ) ),
+	),
+	__( 'Novità', 'wp-digital-italia' ) => array(
+		array( __( 'Le notizie', 'wp-digital-italia' ), $news ? get_permalink( $news ) : home_url( '/' ) ),
+		array( __( 'Albo online', 'wp-digital-italia' ), $albo ),
+		array( __( 'Offerta formativa', 'wp-digital-italia' ), home_url( '/#didattica' ) ),
+	),
+) );
+$legal = array_filter( array(
+	array( __( 'Note legali', 'wp-digital-italia' ), $privacy ? get_permalink( $privacy ) : '' ),
+	array( __( 'Amministrazione Trasparente', 'wp-digital-italia' ), $trasp ?: $albo ),
+	array( __( 'Albo online', 'wp-digital-italia' ), $albo ),
+	array( __( 'Privacy Policy', 'wp-digital-italia' ), $privacy ? get_permalink( $privacy ) : '' ),
+	array( __( 'Dichiarazione di accessibilità', 'wp-digital-italia' ), $access ? get_permalink( $access ) : '' ),
+), fn( $l ) => ! empty( $l[1] ) );
 ?>
-<footer class="dci-scuola-footer">
-	<div class="container-fluid">
-		<div class="container">
-			<div class="row align-items-center dci-scuola-footer__brand-row">
-				<div class="col-12 col-lg-8">
-					<?php dci_render_brand( array( 'tone' => 'light', 'class' => 'dci-scuola-footer__brand' ) ); ?>
-				</div>
-				<div class="col-12 col-lg-4">
-					<div class="dci-scuola-footer__logos">
-						<a href="https://www.miur.gov.it/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'MIUR', 'wp-digital-italia' ); ?></a>
-						<a href="https://www.istruzione.it/pnrr/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'PNRR', 'wp-digital-italia' ); ?></a>
-					</div>
-				</div>
-			</div>
+<footer class="it-footer sc-footer" id="footer-wrapper">
+	<div class="container">
+		<a class="sc-footer__brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+			<?php if ( $logo ) : ?><img src="<?php echo esc_url( $logo ); ?>" alt="" width="64" height="72"><?php endif; ?>
+			<span>
+				<?php if ( $parts['prefix'] ) : ?><span><?php echo esc_html( $parts['prefix'] ); ?></span><?php endif; ?>
+				<strong><?php echo esc_html( $parts['name'] ); ?></strong>
+				<?php if ( get_bloginfo( 'description' ) ) : ?><span><?php bloginfo( 'description' ); ?></span><?php endif; ?>
+			</span>
+		</a>
 
-			<div class="row dci-scuola-footer__center">
-				<div class="col-12 col-md-6 col-lg-4 dci-scuola-footer__section">
-					<h2 class="dci-scuola-footer__title"><?php esc_html_e( 'Contatti scuola', 'wp-digital-italia' ); ?></h2>
-					<hr>
-					<ul class="dci-scuola-footer__contacts">
-						<?php if ( dci_address_line() ) : ?>
-							<li><?php echo esc_html( dci_address_line() ); ?></li>
-						<?php endif; ?>
-						<?php if ( $phone ) : ?>
-							<li><a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a></li>
-						<?php endif; ?>
-						<?php if ( $email ) : ?>
-							<li><a href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a></li>
-						<?php endif; ?>
-						<?php if ( $pec ) : ?>
-							<li><a href="mailto:<?php echo esc_attr( $pec ); ?>">PEC: <?php echo esc_html( $pec ); ?></a></li>
-						<?php endif; ?>
-						<?php if ( $vat ) : ?>
-							<li><?php printf( esc_html__( 'Codice fiscale: %s', 'wp-digital-italia' ), esc_html( $vat ) ); ?></li>
-						<?php endif; ?>
+		<div class="row g-4 sc-footer__cols">
+			<?php foreach ( $cols as $title => $links ) : ?>
+				<div class="col-sm-6 col-lg-3">
+					<h2 class="sc-footer__title"><?php echo esc_html( $title ); ?></h2>
+					<ul class="sc-footer__list">
+						<?php foreach ( $links as [ $label, $url ] ) : ?>
+							<?php if ( $url ) : ?><li><a href="<?php echo esc_url( $url ); ?>"<?php echo 0 === strpos( $url, 'http' ) && false === strpos( $url, home_url() ) ? ' target="_blank" rel="noopener"' : ''; ?>><?php echo esc_html( $label ); ?></a></li><?php endif; ?>
+						<?php endforeach; ?>
 					</ul>
 				</div>
-
-				<?php foreach ( array_filter( $menus, 'dci_has_menu' ) as $location ) : ?>
-					<div class="col-12 col-md-6 col-lg-4 dci-scuola-footer__section">
-						<h2 class="dci-scuola-footer__title"><?php echo esc_html( wp_get_nav_menu_name( $location ) ); ?></h2>
-						<hr>
-						<?php
-						wp_nav_menu(
-							array(
-								'theme_location' => $location,
-								'container'      => false,
-								'fallback_cb'    => '__return_false',
-								'items_wrap'     => '<ul id="%1$s" class="dci-scuola-footer__menu %2$s">%3$s</ul>',
-								'depth'          => 1,
-								'walker'         => new bootstrap_5_wp_simple_menu_walker(),
-							)
-						);
-						?>
-					</div>
-				<?php endforeach; ?>
-
-				<div class="col-12 col-md-6 col-lg-4 dci-scuola-footer__section">
-					<h2 class="dci-scuola-footer__title"><?php esc_html_e( 'Link utili', 'wp-digital-italia' ); ?></h2>
-					<hr>
-					<ul class="dci-scuola-footer__menu">
-						<?php if ( $trasp ) : ?>
-							<li><a href="<?php echo esc_url( $trasp ); ?>"><?php esc_html_e( 'Amministrazione trasparente', 'wp-digital-italia' ); ?></a></li>
-						<?php endif; ?>
-						<?php if ( $urp ) : ?>
-							<li><a href="<?php echo esc_url( $urp ); ?>"><?php esc_html_e( 'URP', 'wp-digital-italia' ); ?></a></li>
-						<?php endif; ?>
-						<li><a href="<?php echo esc_url( wp_login_url() ); ?>"><?php esc_html_e( 'Area riservata', 'wp-digital-italia' ); ?></a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="dci-scuola-footer__bottom">
-				<div class="row align-items-center">
-					<div class="col-12 col-md-6">
-						<?php dci_render_footer_prints( array( 'list_class' => 'dci-scuola-footer__prints' ) ); ?>
-					</div>
-					<div class="col-12 col-md-6">
-						<div class="dci-scuola-footer__socials">
-							<?php dci_render_socials( array( 'label' => __( 'Seguici su', 'wp-digital-italia' ) ) ); ?>
-						</div>
-					</div>
-				</div>
-			</div>
+			<?php endforeach; ?>
 		</div>
+
+		<div class="sc-footer__legal">
+			<ul>
+				<?php foreach ( $legal as [ $label, $url ] ) : ?>
+					<li><a href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $label ); ?></a></li>
+				<?php endforeach; ?>
+			</ul>
+			<?php dci_render_socials( array( 'label' => __( 'Seguici su:', 'wp-digital-italia' ), 'class' => 'sc-footer__socials', 'icon_class' => 'icon icon-white' ) ); ?>
+		</div>
+
+		<div class="sc-footer__info">
+			<p>
+				<?php
+				$line1 = array_filter( array(
+					$address,
+					$phone ? sprintf( /* translators: %s: telefono */ __( 'Telefono: %s', 'wp-digital-italia' ), $phone ) : '',
+					$email ? sprintf( /* translators: %s: email */ __( 'Email: %s', 'wp-digital-italia' ), $email ) : '',
+					$pec ? sprintf( /* translators: %s: PEC */ __( 'Posta elettronica certificata (PEC): %s', 'wp-digital-italia' ), $pec ) : '',
+				) );
+				echo esc_html( implode( ' - ', $line1 ) );
+				?>
+			</p>
+			<p>
+				<?php
+				$line2 = array_filter( array(
+					$mecc ? sprintf( /* translators: %s: codice */ __( 'Codice meccanografico: %s', 'wp-digital-italia' ), $mecc ) : '',
+					$ipa ? sprintf( /* translators: %s: codice IPA */ __( 'Codice Indice delle Pubbliche Amministrazioni (IPA): %s', 'wp-digital-italia' ), $ipa ) : '',
+					$cf ? sprintf( /* translators: %s: codice fiscale */ __( 'Codice fiscale: %s', 'wp-digital-italia' ), $cf ) : '',
+					$cuf ? sprintf( /* translators: %s: codice CUF */ __( 'Codice univoco fatturazione elettronica (CUF): %s', 'wp-digital-italia' ), $cuf ) : '',
+				) );
+				echo esc_html( implode( ' - ', $line2 ) );
+				?>
+			</p>
+		</div>
+
+		<p class="sc-footer__credit"><a href="https://designers.italia.it/" target="_blank" rel="noopener"><?php esc_html_e( 'Idea e progetto di Designers Italia', 'wp-digital-italia' ); ?></a></p>
 	</div>
 </footer>

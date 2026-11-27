@@ -158,7 +158,7 @@ function asl_servizio_strutture( int $servizio_id ): array {
 
 /** Tipi di contenuto che possono avere i tag (oltre agli articoli). */
 function asl_tag_post_types(): array {
-	return apply_filters( 'asl_tag_post_types', array( 'post', 'page', 'servizio', 'dipartimento', 'bando', 'persona' ) );
+	return apply_filters( 'asl_tag_post_types', array( 'post', 'page', 'servizio', 'dipartimento', 'bandi', 'persona' ) );
 }
 
 add_action( 'init', function () {

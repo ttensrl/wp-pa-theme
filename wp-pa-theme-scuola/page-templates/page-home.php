@@ -26,9 +26,9 @@ if ( $cat_circ ) {
 	$notice_posts = get_posts( array( 'posts_per_page' => 1, 'category' => (int) $cat_circ->term_id, 'post_status' => 'publish' ) );
 }
 if ( ! $notice_posts ) {
-	$notice_posts = get_posts( array( 'post_type' => 'bando', 'posts_per_page' => 1, 'post_status' => 'publish' ) );
+	$notice_posts = get_posts( array( 'post_type' => 'bandi', 'posts_per_page' => 1, 'post_status' => 'publish' ) );
 	$notice_label = __( 'Avvisi e bandi', 'wp-digital-italia' );
-	$notice_more  = (string) get_post_type_archive_link( 'bando' );
+	$notice_more  = dci_bandi_url();
 }
 
 $servizi = get_posts( array( 'post_type' => 'servizio', 'numberposts' => 6, 'orderby' => 'title', 'order' => 'ASC' ) );
@@ -81,7 +81,7 @@ $hero_label = (string) get_theme_mod( 'scuola_hero_label', $parts['prefix'] );
 						<article class="sc-card sc-card--notice">
 							<div class="sc-card__body">
 								<h3><a href="<?php echo esc_url( get_permalink( $p ) ); ?>"><?php echo esc_html( get_the_title( $p ) ); ?></a></h3>
-								<p class="sc-card__kind"><?php echo esc_html( get_post_type( $p ) === 'bando' ? __( 'Bando', 'wp-digital-italia' ) : __( 'Circolare', 'wp-digital-italia' ) ); ?></p>
+								<p class="sc-card__kind"><?php echo esc_html( get_post_type( $p ) === 'bandi' ? __( 'Bando', 'wp-digital-italia' ) : __( 'Circolare', 'wp-digital-italia' ) ); ?></p>
 								<p><?php echo esc_html( wp_trim_words( get_the_excerpt( $p ), 30 ) ); ?></p>
 							</div>
 						</article>

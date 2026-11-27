@@ -13,8 +13,8 @@ foreach ( get_categories( array( 'hide_empty' => true, 'exclude' => array( (int)
 		$c->description ?: sprintf( /* translators: %d: numero di contenuti */ _n( '%d contenuto', '%d contenuti', $c->count, 'wp-digital-italia-asl' ), $c->count ),
 	);
 }
-if ( wp_count_posts( 'bando' )->publish ?? 0 ) {
-	$items[] = array( __( 'Bandi e concorsi', 'wp-digital-italia-asl' ), get_post_type_archive_link( 'bando' ), __( 'Avvisi pubblici, concorsi e selezioni per lavorare in ASL', 'wp-digital-italia-asl' ) );
+if ( dci_bandi_url() ) {
+	$items[] = array( __( 'Bandi e concorsi', 'wp-digital-italia-asl' ), dci_bandi_url(), __( 'Avvisi pubblici, concorsi e selezioni per lavorare in ASL', 'wp-digital-italia-asl' ) );
 }
 $tags = get_tags( array( 'hide_empty' => true ) );
 ?>

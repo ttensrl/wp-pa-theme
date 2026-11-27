@@ -19,7 +19,7 @@ $news    = (int) get_option( 'page_for_posts' );
 $privacy = get_page_by_path( 'privacy' );
 $access  = get_page_by_path( 'accessibilita' );
 $trasp   = dci_mod( 'site_contact_administration_transparent' );
-$albo    = get_post_type_archive_link( 'bando' );
+$albo    = dci_bandi_url();
 $about   = scuola_page_url( 'chi-siamo' );
 $org     = scuola_page_url( 'organigramma' );
 

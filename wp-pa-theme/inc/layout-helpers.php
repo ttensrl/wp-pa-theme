@@ -16,15 +16,6 @@ function dci_icon( string $name, string $class = 'icon icon-sm' ): string {
 	);
 }
 
-/** Stato di un bando: 'attivo' | 'scaduto' | ''. */
-function dci_bando_stato( int $post_id ): string {
-	$scadenza = get_post_meta( $post_id, '_dci_bando_data_scadenza', true );
-	if ( empty( $scadenza ) ) {
-		return '';
-	}
-	return strtotime( $scadenza . ' 23:59:59' ) < current_time( 'timestamp' ) ? 'scaduto' : 'attivo';
-}
-
 /** Nome completo di una persona (CPT persona). */
 function dci_persona_nome( int $persona_id ): string {
 	$nome    = get_post_meta( $persona_id, '_dci_persona_nome', true );
@@ -39,7 +30,7 @@ function dci_quick_links(): array {
 	$all = array(
 		array( __( 'Strutture', 'wp-digital-italia' ), 'pa', get_post_type_archive_link( 'dipartimento' ) ),
 		array( __( 'Organigramma', 'wp-digital-italia' ), 'user', $org ),
-		array( __( 'Bandi e concorsi', 'wp-digital-italia' ), 'files', get_post_type_archive_link( 'bando' ) ),
+		array( __( 'Bandi e concorsi', 'wp-digital-italia' ), 'files', dci_bandi_url() ),
 		array( __( 'Notizie', 'wp-digital-italia' ), 'calendar', get_permalink( (int) get_option( 'page_for_posts' ) ) ?: '' ),
 		array( __( 'Persone', 'wp-digital-italia' ), 'user', get_post_type_archive_link( 'persona' ) ),
 	);
@@ -70,14 +61,6 @@ function dci_sidebar_nav(): array {
 		$title = __( 'Strutture', 'wp-digital-italia' );
 		foreach ( get_posts( array( 'post_type' => 'dipartimento', 'post_parent' => 0, 'numberposts' => -1, 'orderby' => 'menu_order title', 'order' => 'ASC' ) ) as $d ) {
 			$items[] = array( get_the_title( $d ), get_permalink( $d ), (int) $d->ID === $here );
-		}
-	} elseif ( is_post_type_archive( 'bando' ) || is_singular( 'bando' ) ) {
-		$title = __( 'Bandi e concorsi', 'wp-digital-italia' );
-		global $wpdb;
-		$years = $wpdb->get_col( "SELECT DISTINCT YEAR( pm.meta_value ) FROM {$wpdb->posts} p INNER JOIN {$wpdb->postmeta} pm ON p.ID = pm.post_id WHERE p.post_type = 'bando' AND p.post_status = 'publish' AND pm.meta_key = '_dci_bando_data_publish' AND pm.meta_value != '' ORDER BY 1 DESC" );
-		$items[] = array( __( 'Tutti i bandi', 'wp-digital-italia' ), get_post_type_archive_link( 'bando' ), is_post_type_archive( 'bando' ) && ! get_query_var( 'bando_year' ) );
-		foreach ( $years as $y ) {
-			$items[] = array( sprintf( __( 'Bandi %s', 'wp-digital-italia' ), $y ), home_url( '/bandi/' . $y . '/' ), (string) get_query_var( 'bando_year' ) === (string) $y );
 		}
 	} elseif ( is_home() || is_singular( 'post' ) || is_category() || is_search() || is_archive() ) {
 		$title = __( 'Notizie', 'wp-digital-italia' );
@@ -120,14 +103,29 @@ function dci_latest_posts( int $n = 6, int $offset = 0 ): WP_Query {
 	) );
 }
 
-/** Ultimi bandi (ordinati per data di pubblicazione). */
-function dci_latest_bandi( int $n = 5 ): WP_Query {
-	return new WP_Query( array(
-		'post_type'      => 'bando',
-		'posts_per_page' => $n,
-		'post_status'    => 'publish',
-		'meta_key'       => '_dci_bando_data_publish',
-		'orderby'        => 'meta_value',
-		'order'          => 'DESC',
-	) );
+/** URL dei bandi: la gestione dei bandi e' del plugin amministrazione-trasparente. */
+function dci_bandi_url(): string {
+	return function_exists( 'at_bandi_url' ) ? at_bandi_url() : '';
 }
+
+/** Ultimi bandi (plugin amministrazione-trasparente); query vuota se il plugin non e' attivo. */
+function dci_latest_bandi( int $n = 5 ): WP_Query {
+	if ( function_exists( 'at_bandi_ultimi' ) ) {
+		return at_bandi_ultimi( $n );
+	}
+	return new WP_Query( array( 'post__in' => array( 0 ) ) );
+}
+
+/**
+ * Integrazione con il plugin amministrazione-trasparente (gestione dei bandi):
+ * breadcrumb e menu laterale li disegna il tema, il plugin produce solo contenuto ed elenco.
+ */
+add_filter(
+	'at_bandi_layout',
+	static function ( array $layout ): array {
+		$layout['breadcrumb'] = false;
+		$layout['sidebar']    = false;
+		$layout['title']      = false;
+		return $layout;
+	}
+);

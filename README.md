@@ -20,7 +20,7 @@ Una rete WordPress multisite con tre siti reali, ognuno con il proprio tema, con
 - **Boxed o full width** dal Personalizza (default boxed: sfondi a tutta larghezza, contenuti centrati).
 - **Sidebar a sinistra a box colorati**: navigazione di sezione contestuale, contatti, accessi rapidi, accordion di servizi e strutture.
 - **Organigramma e strutture**: dipartimenti gerarchici con persone, ruoli e unità collegate.
-- **Bandi e concorsi**: filtro per anno, stato *In corso*/*Scaduto*, allegati, termini, aggiudicatari.
+- **Bandi e concorsi**: gestiti dal plugin `amministrazione-trasparente` (sezioni OIV/ANAC, pagine di sezione, filtro per anno).
 - **Prenotazione appuntamenti** con slot e calendario; **cookie consent** GDPR granulare.
 - **Profili per ente via child theme**: cambiano solo colori e contenuti, il lavoro pesante sta nel parent.
 

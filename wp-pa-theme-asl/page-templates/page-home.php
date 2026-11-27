@@ -14,7 +14,7 @@ get_header();
 $arrow = '<svg class="asl-arrow" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 12h17M14 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>';
 
 $news_url  = get_permalink( (int) get_option( 'page_for_posts' ) );
-$bandi_url = get_post_type_archive_link( 'bando' );
+$bandi_url = dci_bandi_url();
 $serv_url  = get_post_type_archive_link( 'servizio' );
 
 /* Ricerca rapida: modificabile dai child/plugin con il filtro. */
@@ -211,10 +211,7 @@ $book_icon = '<svg class="asl-card-icon" viewBox="0 0 24 24" width="20" height="
 
 	<!-- Bandi di gara -->
 	<?php
-	$bandi = new WP_Query( array(
-		'post_type' => 'bando', 'posts_per_page' => 4, 'post_status' => 'publish',
-		'meta_key'  => '_dci_bando_data_publish', 'orderby' => 'meta_value', 'order' => 'DESC',
-	) );
+	$bandi = dci_latest_bandi( 4 );
 	if ( $bandi->have_posts() ) :
 		?>
 		<section class="asl-section" aria-labelledby="asl-bandi-title">
@@ -225,8 +222,7 @@ $book_icon = '<svg class="asl-card-icon" viewBox="0 0 24 24" width="20" height="
 					<?php
 					while ( $bandi->have_posts() ) :
 						$bandi->the_post();
-						$pub = get_post_meta( get_the_ID(), '_dci_bando_data_publish', true );
-						$ts  = $pub ? strtotime( $pub ) : get_the_time( 'U' );
+						$ts = get_the_time( 'U' );
 						?>
 						<div class="col-md-6">
 							<article class="asl-card asl-card--bando">
